@@ -1,0 +1,105 @@
+/*
+  Place styles specific to the homepage in here.
+*/
+
+video[poster]{
+  height:100%;
+  width:100%;
+}
+
+#backmask {
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  object-position: 50%;
+  background-size: cover;
+  background-position: 50%;
+  z-index: -1;
+}
+
+.intro {
+  cursor: pointer;
+  .desktop-play-btn {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    .play-reel {
+      opacity: 0;
+      position: absolute;
+      width: 200px;
+      height: 155px;
+      margin-left: -100px;
+      margin-top: -77px;
+      transition: opacity 0.4s ease-out;
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+  .play-reel {
+    width: 150px;
+    height: auto;
+    @include breakpoint(md){
+      width: 200px;
+    }
+  }
+  .intro-video {
+    opacity: 1;
+    transition: opacity 0.2s ease-out;
+    display: none;
+    @include breakpoint(md){
+      display: inline;
+    }
+  }
+  .mobile-intro {
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    object-position: 50%;
+    background-size: cover;
+    background-position: 50%;
+    z-index: -1;
+    display: inline;
+    @include breakpoint(md){
+      display: none;
+    }
+  }
+  .play-btn {
+    opacity: 1;
+  }
+  #hero-reel {
+    transform: translate(0px, 50px);
+    opacity: 0;
+    transition: transform, opacity, .6s ease-out;
+    visibility: hidden;
+    video {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.intro.active-reel {
+  cursor: auto;
+  .desktop-play-btn {
+    display: none;
+  }
+  .intro-video {
+    opacity: 0;
+  }
+  .mobile-intro {
+    opacity: .2;
+  }
+  #hero-reel {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0px, 0px);
+  }
+}

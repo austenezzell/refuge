@@ -1,0 +1,55 @@
+/*
+  Global variables
+*/
+
+// Font size
+$body-font-size: 21px;
+$body-font-scale: 1.5;
+
+// Line-height
+$body-line-height: 1.5;
+$header-line-height: 1.1;
+
+// Brand colors
+$color-black: #000;
+$color-primary: #F27B33;
+$color-secondary: #272727;
+$color-light-orange: #F59249;
+$color-dark-orange: #EF5C34;
+$color-dark-gray: #272727;
+$color-gray: #58595B;
+$color-med-gray: #A6A6A6;
+$color-light-gray: #F2F2F2;
+/*
+  This is used in _utils.scss to generate text and bg color classes.
+  Can also be used as a function - ex: { color: cssColor(colorName) }
+*/
+$cssColors: (
+  dark: $color-black,
+  lite: #f5f5f5,
+  primary: $color-primary,
+  secondary:  $color-secondary,
+  success: #0C0,
+  error: #C00,
+  warning: #CC0,
+) !default;
+
+// Base margin & padding
+$base-spacing: 20px;
+
+// Grid settings
+$grid-breakpoints: (
+  xs: 0,
+  sm: 544px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1600px
+) !default;
+
+$grid-columns: 12;
+$grid-max-width: map_get($grid-breakpoints, xl);
+$grid-gutter-width: $base-spacing;
+
+// Used for looping
+$breakpoints: map_keys($grid-breakpoints) !default;

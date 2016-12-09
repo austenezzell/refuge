@@ -1,0 +1,26 @@
+/*
+  Header styles
+*/
+
+.header-container {
+  position: relative;
+  width: 100%;
+}
+.main-header {
+  background: $color-dark-gray;
+  background: linear-gradient( to bottom, rgba(#F35925,.3), rgba(#F9903D,.1), rgba($color-primary,0));
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin-left: auto;
+  z-index: 2;
+}
+.logo {
+  position: relative;
+  top: -14px;
+  svg {
+    height: 50px;
+    width: 60px;
+  }
+}

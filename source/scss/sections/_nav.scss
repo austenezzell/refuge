@@ -1,0 +1,42 @@
+/*
+  Nav styles
+*/
+
+
+nav {
+  position: relative;
+  ul {
+    margin: 0;
+    padding: 0;
+    li {
+      float: left;
+      list-style: none;
+      padding-left: 30px;
+      @include breakpoint(sm){
+        padding-left:0;
+        padding-right: 60px;
+      }
+      a {
+        @include bold-font();
+        color: white;
+        transition: color 0.2s ease-out;
+        &:hover {
+          text-decoration: none;
+          color: $color-primary;
+        }
+      }
+    }
+  }
+}
+
+// Current page
+.portfolio {
+  nav a.nav-portfolio {
+    border-bottom: 2px solid $color-primary;
+  }
+}
+.studio {
+  nav a.nav-studio {
+    border-bottom: 2px solid $color-primary;
+  }
+}

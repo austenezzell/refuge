@@ -1,0 +1,33 @@
+/*
+  Font settings
+  - SVG fonts need #font_id from <font> tag
+*/
+@mixin font() {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+}
+
+@mixin regular-font() {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+}
+
+@mixin italic-font() {
+  font-family: 'Roboto', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+}
+
+@mixin bold-font() {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+@mixin black-font() {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 900;
+}

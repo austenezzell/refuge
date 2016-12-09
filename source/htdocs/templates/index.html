@@ -1,0 +1,59 @@
+{% extends "_layout" %} {% block content %}
+
+<section class="intro">
+
+  <div class="intro-video ">
+    <div class=" vh-full desktop-play-btn">
+      <img class="play-reel" id="desktop-play-reel" src="/img/play_reel.svg" alt="">
+    </div>
+    <video id="backmask" src="{{ entry.introVideo }}" autoplay loop muted></video>
+  </div>
+
+  <div class="mobile-intro" style="background-image: url(
+    {% for introImage in entry.mobileIntroImage %}
+      {{ introImage.getUrl }}
+    {% endfor %}
+    );">
+    <div class="wrap">
+      <div class="row vh-full">
+        <div class="col-xs-10 offset-xs-1 align-middle-xs">
+          <img class="play-reel" src="/img/play_reel.svg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="wrap">
+    <div class="row vh-full reel ">
+      <div class="col-xs-10 offset-xs-1 align-middle-xs ">
+        <video id="hero-reel" src="{{ entry.refugeReel }}" controls="controls" ></video>
+      </div>
+    </div>
+  </section>
+
+</section>
+
+<section class="padding-y-xs-3x wrap">
+  <div class="row">
+    <div class="col-xs-10 offset-xs-1 col-md-5 offset-md-1">
+      {% if entry.bodyContentHeader %}
+        <h2>{{ entry.bodyContentHeader }}</h2>
+      {% endif %}
+    </div>
+    <div class="col-xs-10 offset-xs-1 col-md-5 offset-md-0">
+      {% if entry.body %}
+        <div class="body-copy">{{ entry.body }}</div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="padding-y-xs-3x wrap">
+  <div class="row">
+    <div class="col-xs-10 offset-xs-1 col-md-5 offset-md-6">
+      <a class="font-lg cta" href="/portfolio/">See our work</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

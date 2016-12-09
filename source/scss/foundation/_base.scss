@@ -1,0 +1,43 @@
+@include font();
+
+:root {
+  -webkit-tap-highlight-color: transparent;
+  text-size-adjust: none;
+  box-sizing: border-box!important;
+  @include font-size(sm);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  @include regular-font();
+  color: $color-light-gray;
+  background: $color-dark-gray;
+}
+
+img, video {
+  width: 100%;
+  height: auto;
+}
+
+.cta {
+  color: white;
+  @include bold-font();
+  border-bottom: 2px solid $color-primary;
+  &:hover {
+    color: $color-primary;
+    text-decoration: none;
+  }
+}
+
+.body-copy {
+  color: $color-gray;
+  p {
+    color: $color-gray;
+  }
+}

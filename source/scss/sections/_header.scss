@@ -21,6 +21,12 @@
   top: -14px;
   svg {
     height: 50px;
-    width: 60px;
+    width: 200px;
+    #word {
+      display: none;
+      @include breakpoint(md){
+        display: block;
+      }
+    }
   }
 }

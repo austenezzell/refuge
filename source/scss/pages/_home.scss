@@ -7,7 +7,12 @@ video[poster]{
   width:100%;
 }
 
-#backmask {
+.intro {
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.backmask {
   background-color: #000;
   position: absolute;
   top: 0;
@@ -20,82 +25,83 @@ video[poster]{
   z-index: -1;
 }
 
-.intro {
-  cursor: pointer;
-  .desktop-play-btn {
+.home-play-btn {
+  position: absolute;
+  width: 100%;
+  margin: 0;
+  left: auto;
+  @include breakpoint(xl){
+    width: $grid-max-width;
+    margin-left: 50%;
+    left: -$grid-max-width / 2;
+  }
+  .play-reel {
+    color: $color-primary;
+    bottom: $base-spacing * 2;
     position: absolute;
-    top:0;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    .play-reel {
-      opacity: 0;
+    width: 190px;
+    @include breakpoint(md){
+      width: 280px;
+    }
+    h2 {
+      display: inline-block;
+    }
+    img {
+      height: 30px;
+      width: 30px;
       position: absolute;
-      width: 200px;
-      height: 155px;
-      margin-left: -100px;
-      margin-top: -77px;
-      transition: opacity 0.4s ease-out;
-      &.active {
-        opacity: 1;
+      right: 0;
+      display: inline-block;
+      @include breakpoint(md){
+        height: 50px;
+        width: 50px;
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: opacity, transform 0.2s ease-out;
       }
     }
   }
-  .play-reel {
-    width: 150px;
-    height: auto;
-    @include breakpoint(md){
-      width: 200px;
+  .play-reel.active {
+    img {
+      opacity: 1;
+      transform: translateX(0px);
     }
   }
-  .intro-video {
-    opacity: 1;
-    transition: opacity 0.2s ease-out;
+}
+
+.video-intro {
+  display: none;
+  opacity: 1;
+  transition: opacity 0.2s ease-out;
+  @include breakpoint(md){
+    display: block;
+  }
+}
+
+.mobile-intro {
+  display: block;
+  opacity: 1;
+  transition: opacity 0.2s ease-out;
+  @include breakpoint(md){
     display: none;
-    @include breakpoint(md){
-      display: inline;
-    }
   }
-  .mobile-intro {
-    position: absolute;
-    top: 0;
-    height: 100vh;
-    width: 100vw;
-    object-fit: cover;
-    object-position: 50%;
-    background-size: cover;
-    background-position: 50%;
-    z-index: -1;
-    display: inline;
-    @include breakpoint(md){
-      display: none;
-    }
-  }
-  .play-btn {
-    opacity: 1;
-  }
-  #hero-reel {
-    transform: translate(0px, 50px);
-    opacity: 0;
-    transition: transform, opacity, .6s ease-out;
-    visibility: hidden;
-    video {
-      width: 100%;
-      height: auto;
-    }
+}
+
+#hero-reel {
+  transform: translate(0px, 50px);
+  opacity: 0;
+  transition: transform, opacity, .6s ease-out;
+  visibility: hidden;
+  video {
+    width: 100%;
+    height: auto;
   }
 }
 
 .intro.active-reel {
   cursor: auto;
-  .desktop-play-btn {
-    display: none;
-  }
-  .intro-video {
+  .play-reel, .mobile-intro, .video-intro {
     opacity: 0;
-  }
-  .mobile-intro {
-    opacity: .2;
   }
   #hero-reel {
     opacity: 1;

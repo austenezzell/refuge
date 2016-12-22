@@ -2,23 +2,20 @@
 
 <section class="intro">
 
-  <div class="intro-video ">
-    <div class=" vh-full desktop-play-btn">
-      <img class="play-reel" id="desktop-play-reel" src="/img/play_reel.svg" alt="">
+  <div class="">
+    <video class="backmask video-intro" src="{{ entry.introVideo }}" autoplay loop muted></video>
+    <div class="backmask mobile-intro" style="background-image: url(
+      {% for introImage in entry.mobileIntroImage %}
+        {{ introImage.getUrl }}
+      {% endfor %}
+      );">
     </div>
-    <video id="backmask" src="{{ entry.introVideo }}" autoplay loop muted></video>
   </div>
 
-  <div class="mobile-intro" style="background-image: url(
-    {% for introImage in entry.mobileIntroImage %}
-      {{ introImage.getUrl }}
-    {% endfor %}
-    );">
-    <div class="wrap">
-      <div class="row vh-full">
-        <div class="col-xs-10 offset-xs-1 align-middle-xs">
-          <img class="play-reel" src="/img/play_reel.svg" alt="">
-        </div>
+  <div class="wrap home-play-btn">
+    <div class="row vh-full">
+      <div class="col-xs-10 offset-xs-1">
+        <div class="play-reel"><h2>Play Reel</h2><img src="img/play.svg" alt=""></div>
       </div>
     </div>
   </div>
@@ -51,7 +48,7 @@
 <section class="padding-y-xs-3x wrap">
   <div class="row">
     <div class="col-xs-10 offset-xs-1 col-md-5 offset-md-6">
-      <a class="font-lg cta" href="/portfolio/">See our work</a>
+      <a class="font-lg cta" href="/portfolio/">See our portfolio</a>
     </div>
   </div>
 </section>

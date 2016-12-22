@@ -16,19 +16,25 @@ var aeApp = aeApp || {};
       }
     });
 
-    // follow mouse cursor
-    $('.intro').on('mousemove', function(e){
-      const xPos = e.pageX;
-      const yPos = e.pageY;
-      $('#desktop-play-reel').css({ left: xPos, top: yPos });
+    $('.play-reel').hover(function(e){
+      $(this).addClass('active');
+    }, function(){
+      $(this).removeClass('active');
     });
 
+    // follow mouse cursor
+    // $('.intro').on('mousemove', function(e){
+    //   const xPos = e.pageX;
+    //   const yPos = e.pageY;
+    //   $('#desktop-play-reel').css({ left: xPos, top: yPos });
+    // });
+
     // Show play button on hover
-    $('.intro').hover(function(){
-      $('#desktop-play-reel').addClass('active');
-    }, () => {
-      $('#desktop-play-reel').removeClass('active');
-    });
+    // $('.intro').hover(function(){
+    //   $('#desktop-play-reel').addClass('active');
+    // }, () => {
+    //   $('#desktop-play-reel').removeClass('active');
+    // });
   };
 
   aeApp.slickSlider = function(){

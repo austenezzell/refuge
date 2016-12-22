@@ -3,14 +3,20 @@
 {% block content %}
 
 <section class="">
-  <div class="intro-image ">
-    {% set coverAsset = entry.cover.first() %}
-    {% if coverAsset %}
-      <img src="{{ coverAsset.getUrl }}" alt="">
-    {% else %}
-      <img src="/img/pnw.jpg" alt="">
-    {% endif %}
-  </div>
+  {% if entry.introImageCarousel %}
+    <section class="">
+      <div class="">
+        <div class="">
+          <!-- IMAGE SLIDER -->
+          <section class="slick-slider slider">
+            {% for introCarouselImage in entry.introImageCarousel %}
+              <div><img src="{{introCarouselImage.getUrl('introImageCarousel') }}" alt=""></div>
+            {% endfor %}
+          </section>
+        </div>
+      </div>
+    </section>
+  {% endif %}
 </section>
 
 <section class="padding-y-xs-3x wrap">
@@ -78,7 +84,7 @@
 <section class="padding-y-xs-3x wrap">
   <div class="row">
     <div class="col-xs-10 offset-xs-1 col-md-5 offset-md-6">
-      <a class="font-lg cta" href="/portfolio/">See our work</a>
+      <a class="font-lg cta" href="/portfolio/">See our portfolio</a>
     </div>
   </div>
 </section>

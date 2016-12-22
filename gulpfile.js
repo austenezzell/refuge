@@ -29,7 +29,7 @@ function getTask(task) {
 
 // Gulp tasks
 gulp.task('clean', function() {
-  return del([paths.build + '/*', '!' + paths.build + '/site-content']);
+  return del([paths.build + '/*', '!' + paths.build + '/img']);
 });
 
 gulp.task('serve', ['watch'], getTask('serve'));

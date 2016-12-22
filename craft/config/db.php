@@ -14,14 +14,31 @@ return array(
 
 	// The name of the database to select.
 	'database' => 'refuge',
+    // 'database' => 'refugefx_craft',
 
 	// The database username to connect with.
 	'user' => 'root',
+    // 'user' => 'aezzell',
 
 	// The database password to connect with.
 	'password' => 'root',
+    // 'password' => 'vLGq}EP9',
 
 	// The prefix to use when naming tables. This can be no more than 5 characters.
 	'tablePrefix' => 'craft_',
 
 );
+
+
+
+// return array(
+//   '*' => array(
+//     'tablePrefix' => 'craft',
+//   ),
+//   '162.243.139.148' => array(
+// 		'server' => 'localhost',
+// 		'user' => 'aezzell',
+// 		'password' => 'vLGq}EP9',
+// 		'database' => 'refugefx_craft'
+//   )
+// );

@@ -4,6 +4,25 @@
 
 var aeApp = aeApp || {};
 
+  aeApp.videoControls = function(){
+    $('.portfolio-video').hover(function toggleControls() {
+      if (this.hasAttribute("controls")) {
+          this.removeAttribute("controls")
+      } else {
+          this.setAttribute("controls", "controls")
+      }
+    });
+
+    $('.portfolio-video').click(function(){
+      $(this).get(0).play();
+    });
+
+    $('.portfolio-video').click(function(){
+        $(this).play();
+    },false);
+  };
+
+
   aeApp.playReel = function(){
     // hide cover play reel on click
     $('.intro').click(function(e){
@@ -38,7 +57,7 @@ var aeApp = aeApp || {};
   };
 
   aeApp.slickSlider = function(){
-      $('.slider').slick({
+      $('.slider-a').slick({
         dots: false,
         autoplay: true,
         arrows: false,
@@ -47,12 +66,25 @@ var aeApp = aeApp || {};
         speed: 300,
         infinite: true,
         slidesToShow: 1,
-        slidesToScroll: 1,
+        slidesToScroll: 1
+      });
+
+      $('.slider-b').slick({
+        dots: false,
+        autoplay: true,
+        arrows: false,
+        fade: true,
+        pauseOnHover: false,
+        speed: 300,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1
       });
   };
 
   // Define load object
   aeApp.onload = function() {
+    aeApp.videoControls();
     aeApp.playReel();
     aeApp.slickSlider();
   };

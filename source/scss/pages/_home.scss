@@ -37,11 +37,12 @@ video[poster]{
   }
   .play-reel {
     color: $color-primary;
-    bottom: $base-spacing * 2;
+    bottom: $base-spacing * 3;
     position: absolute;
     width: 190px;
     @include breakpoint(md){
       width: 280px;
+      bottom: $base-spacing * 2;
     }
     h2 {
       display: inline-block;

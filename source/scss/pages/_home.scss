@@ -1,112 +1,90 @@
 /*
   Place styles specific to the homepage in here.
 */
-
-video[poster]{
-  height:100%;
-  width:100%;
-}
-
-.intro {
-  cursor: pointer;
-  overflow: hidden;
-}
-
-.backmask {
-  background-color: #000;
-  position: absolute;
-  top: 0;
-  height: 100vh;
-  width: 100vw;
-  object-fit: cover;
-  object-position: 50%;
-  background-size: cover;
-  background-position: 50%;
-  z-index: -1;
-}
-
-.home-play-btn {
-  position: absolute;
-  width: 100%;
-  margin: 0;
-  left: auto;
-  @include breakpoint(xl){
-    width: $grid-max-width;
-    margin-left: 50%;
-    left: -$grid-max-width / 2;
+.home-page {
+  .main-content {
+    background: black;
   }
-  .play-reel {
-    color: $color-primary;
-    bottom: $base-spacing * 3;
+}
+.site-intro{
+  .up-and-in {
+    transform: translateY(24px);
+  }
+  p > a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.underscore {
+  padding-left: 48px;
+  position: relative;
+  &:before {
+    content: '';
     position: absolute;
-    width: 190px;
-    @include breakpoint(md){
-      width: 280px;
-      bottom: $base-spacing * 2;
-    }
-    h2 {
-      display: inline-block;
-    }
-    img {
-      height: 30px;
-      width: 30px;
-      position: absolute;
-      right: 0;
-      display: inline-block;
-      @include breakpoint(md){
-        height: 50px;
-        width: 50px;
-        opacity: 0;
-        transform: translateX(-10px);
-        transition: opacity, transform 0.2s ease-out;
-      }
-    }
-  }
-  .play-reel.active {
-    img {
-      opacity: 1;
-      transform: translateX(0px);
-    }
+    width: 36px;
+    height: 2px;
+    background: black;
+    left: 0;
+    top: 50%;
   }
 }
+.case-study-container {
 
-.video-intro {
-  display: none;
-  opacity: 1;
-  transition: opacity 0.2s ease-out;
+}
+.text-img-module {
+  padding: 60px 0 100px;
   @include breakpoint(md){
+    padding: 60px 0 240px;
+  }
+  h2 {
+    margin-bottom: $base-spacing / 2;
+    @include breakpoint(md){
+      margin-bottom: $base-spacing;
+    }
+  }
+  a {
     display: block;
   }
+  a {
+    text-decoration: none;
+  }
+  a.mobile-cta {
+    background: black;
+    color: white;
+    padding: 6px 14px;
+    display: inline-block;
+    @include breakpoint(md){
+      display: none;
+    }
+  }
 }
 
-.mobile-intro {
-  display: block;
-  opacity: 1;
-  transition: opacity 0.2s ease-out;
+.client {
+  position: absolute;
+  top: -36px;
+  @include breakpoint(sm){
+    top: -50px;
+  }
   @include breakpoint(md){
-    display: none;
+    top: -56px;
   }
 }
 
-#hero-reel {
-  transform: translate(0px, 50px);
-  opacity: 0;
-  transition: transform, opacity, .6s ease-out;
-  visibility: hidden;
-  video {
-    width: 100%;
-    height: auto;
+.left-img .client {
+  left: 13px;
+  @include breakpoint(md){
+    left: auto;
+    right: 48px;
   }
 }
 
-.intro.active-reel {
-  cursor: auto;
-  .play-reel, .mobile-intro, .video-intro {
-    opacity: 0;
+.right-img .client {
+  left: 13px;
+  @include breakpoint(md){
+    left: 48px;
   }
-  #hero-reel {
-    opacity: 1;
-    visibility: visible;
-    transform: translate(0px, 0px);
-  }
+
 }

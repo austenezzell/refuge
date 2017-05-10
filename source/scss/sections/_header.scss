@@ -2,31 +2,56 @@
   Header styles
 */
 
-.header-container {
-  position: relative;
-  width: 100%;
+.gradient-img {
+  display: none;
 }
-.main-header {
-  background: $color-dark-gray;
-  background: linear-gradient( to bottom, rgba(#F35925,.3), rgba(#F9903D,.1), rgba($color-primary,0));
+
+.activeNav {
+  .site-title {
+    z-index: 1;
+  }
+}
+.site-title {
+  position: absolute;
+  mix-blend-mode: difference;
+  color: white;
+  top: 64px;
+  left: 8.33333%;
+  z-index: 3;
+  &:hover {
+    text-decoration: none;
+  }
+}
+a.hamburger {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  margin-left: auto;
-  z-index: 2;
+  top: 72px;
+  right: 8.33333%;
+  width: 32px;
+  height: 10px;
+  z-index: 999;
+  margin-right: 13px;
+  .line {
+    height: 2px;
+    width: 100%;
+    background: black;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: transform, .2s;
+  }
+  .line-2 {
+    top: 8px;
+  }
 }
-.logo {
-  position: relative;
-  top: -14px;
-  svg {
-    height: 50px;
-    width: 200px;
-    #word {
-      display: none;
-      @include breakpoint(md){
-        display: block;
-      }
+.activeNav {
+  a.hamburger {
+    .line-1 {
+      transform: rotate(45deg);
+      top: 4px;
+    }
+    .line-2 {
+      transform: rotate(-45deg);
+      top: 4px;
     }
   }
 }

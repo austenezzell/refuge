@@ -12,14 +12,16 @@ $header-line-height: 1.1;
 
 // Brand colors
 $color-black: #000;
-$color-primary: #F27B33;
-$color-secondary: #272727;
-$color-light-orange: #F59249;
-$color-dark-orange: #EF5C34;
-$color-dark-gray: #272727;
-$color-gray: #58595B;
-$color-med-gray: #A6A6A6;
-$color-light-gray: #F2F2F2;
+$color-primary: blue;
+$color-secondary: pink;
+$color-gray: #DADADA;
+$warm-gray: #F4F0EB;
+$cool-gray: #EFF1F4;
+$gray-gradient: linear-gradient(-45deg,$warm-gray,$cool-gray);
+$cool: #f2f7f9;
+$warm: #f7f6f2;
+$warm-cool: linear-gradient(-45deg,$warm,$cool);
+
 /*
   This is used in _utils.scss to generate text and bg color classes.
   Can also be used as a function - ex: { color: cssColor(colorName) }
@@ -48,7 +50,7 @@ $grid-breakpoints: (
 ) !default;
 
 $grid-columns: 12;
-$grid-max-width: map_get($grid-breakpoints, xl);
+$grid-max-width: 100%;
 $grid-gutter-width: $base-spacing;
 
 // Used for looping

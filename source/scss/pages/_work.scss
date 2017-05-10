@@ -1,0 +1,18 @@
+/*
+  Place styles specific to the Portfolio Page in here.
+*/
+.work-page {
+  .work-module {
+    padding-top: $base-spacing * 8;
+    padding-bottom: $base-spacing * 4;
+  }
+  .hamburger {
+    z-index: 8
+  }
+  .primary-video {
+    z-index: 9;
+  }
+  .site-title {
+    display: none;
+  }
+}

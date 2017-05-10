@@ -1,0 +1,52 @@
+/*
+  Place styles specific to the Portfolio Page in here.
+*/
+.info-page {
+  #work {
+    position: relative;
+    padding: $base-spacing * 8 0 0;
+  }
+}
+.intro-img-section {
+  padding: 240px 0;
+}
+
+.press {
+  margin-bottom: $base-spacing * 8;
+  ul {
+    padding: 0;
+    li {
+      list-style: none;
+      padding: 0;
+      margin-bottom: $base-spacing * 1;
+      a {
+        display: block;
+        border-bottom: 1px solid $color-gray;
+        padding-bottom: $base-spacing;
+        span.date {
+          display: block;
+          margin-bottom: $base-spacing / 2;
+          color: darken($color-gray, 10%);
+        }
+        &:hover {
+          text-decoration: none;
+          border-color: black;
+          span.date {
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}
+
+.contact-module {
+  padding-bottom: $base-spacing * 8;
+  ul {
+    padding: 0;
+    li {
+      list-style: none;
+
+    }
+  }
+}

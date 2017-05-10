@@ -2,41 +2,108 @@
   Nav styles
 */
 
-
-nav {
-  position: relative;
+.hidden-nav {
+  z-index: 10;
+  // display: none;
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: white;
+  li {
+    transform: translateY(40px);
+    opacity: 0;
+    transition: all, .4s;
+  }
+  a.hamburger-site-title {
+    position: absolute;
+    padding: 13px;
+    bottom: 64px;
+    left: 8%;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+.hidden-nav, .footer-nav {
   ul {
-    margin: 0;
     padding: 0;
+    margin: 0;
     li {
-      float: left;
       list-style: none;
-      padding-left: 30px;
-      @include breakpoint(sm){
-        padding-left:0;
-        padding-right: 60px;
-      }
+      padding: 0;
+      margin: 0;
+      text-align: right;
       a {
-        @include bold-font();
-        color: white;
-        transition: color 0.2s ease-out;
+        color: black;
+        position: relative;
         &:hover {
           text-decoration: none;
-          color: $color-primary;
+          color: $color-gray;
+        }
+        &:before {
+          position: absolute;
+          content: '';
+          // width: 56px;
+          width: 0;
+          height: 4px;
+          left: -72px;
+          top: 50%;
+          margin-top: 1px;
+          background: black;
         }
       }
     }
   }
 }
 
-// Current page
-.portfolio {
-  nav a.nav-portfolio {
-    border-bottom: 2px solid $color-primary;
+.social-nav {
+  margin-top: 32px;
+  line-height: 1.4;
+}
+
+
+.activeNav {
+  .hidden-nav {
+    // display: block;
+    opacity: 1;
+    visibility: visible;
+    li {
+      transform: translate3d(0, 0px, 0);
+      opacity: 1;
+    }
   }
 }
-.studio {
-  nav a.nav-studio {
-    border-bottom: 2px solid $color-primary;
+
+.work-page, .home-page {
+  .hidden-nav, .footer-nav {
+    ul li a.nav-work {
+      &:before {
+        width: 56px;
+      }
+    }
+  }
+}
+
+.info-page {
+  .hidden-nav, .footer-nav {
+    ul li a.nav-info {
+      &:before {
+        width: 56px;
+      }
+    }
+  }
+}
+
+.contact-page {
+  .hidden-nav, .footer-nav {
+    ul li a.nav-contact {
+      &:before {
+        width: 56px;
+      }
+    }
   }
 }

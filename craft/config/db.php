@@ -13,7 +13,7 @@ return array(
 	'server' => 'localhost',
 
 	// The name of the database to select.
-	'database' => 'refuge',
+	'database' => 'hanour',
     // 'database' => 'refugefx_craft',
 
 	// The database username to connect with.

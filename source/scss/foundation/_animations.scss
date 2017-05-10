@@ -14,3 +14,31 @@
 .a-fadeIn {
   animation: fade-in 500ms ease forwards;
 }
+
+@keyframes black-to-white {
+  0% {
+    background: black;
+  }
+  100% {
+    background: white;
+  }
+}
+
+.black-to-white {
+  animation: black-to-white 1s ease forwards;
+  animation-delay: 1s;
+}
+
+@keyframes up-and-in {
+  0% {
+    transform: translateY(24px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.up-and-in {
+  animation: up-and-in .4s ease forwards;
+  animation-delay: 1.0s;
+}

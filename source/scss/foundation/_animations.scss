@@ -14,6 +14,9 @@
 .a-fadeIn {
   animation: fade-in 500ms ease forwards;
 }
+.b-fadeIn {
+  animation: fade-in 2500ms ease forwards;
+}
 
 @keyframes black-to-white {
   0% {
@@ -41,4 +44,23 @@
 .up-and-in {
   animation: up-and-in .4s ease forwards;
   animation-delay: 1.0s;
+}
+
+@keyframes up-and-in-b {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.up-and-in-b {
+  animation: up-and-in-b 1s ease forwards;
+  animation-delay: .5s;
+  video, img {
+    animation: up-and-in-b 1.5s ease forwards;
+  }
 }

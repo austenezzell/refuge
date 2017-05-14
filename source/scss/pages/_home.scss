@@ -5,7 +5,11 @@
   .main-content {
     background: black;
   }
+  #work {
+    margin-top: 1px;
+  }
 }
+
 .site-intro{
   .up-and-in {
     transform: translateY(24px);
@@ -65,6 +69,7 @@
 .client {
   position: absolute;
   top: -36px;
+  z-index: 2;
   @include breakpoint(sm){
     top: -50px;
   }

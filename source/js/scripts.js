@@ -258,13 +258,62 @@ var aeApp = aeApp || {};
   (function($, window, document) {
     aeApp.onload();
 
-    var waypoint = new Waypoint({
-      element: document.getElementById('work'),
-      handler: function(direction) {
-        console.log('Scrolled to waypoint!')
-      }
-    })
+    // var waypoint = new Waypoint({
+    //   element: document.getElementById('case-study'),
+    //   handler: function(direction) {
+    //     console.log('Scrolled to waypoint!')
+    //   }
+    // })
 
+    // var lazyLoad = $('.lazy-load-video-module');
+    //
+    // var waypoint = new Waypoint.Inview({
+    //   element: lazyLoad,
+    //   enter: function () {
+    //     console.log('on');
+    //   },
+    //   exited: function () {
+    //     console.log('off');
+    //   }
+    // });
+
+    var lazyLoad = document.getElementsByClassName('lazy-load');
+
+    for (var i = 0; i < lazyLoad.length; i++) {
+      var inview = new Waypoint.Inview({
+        element: lazyLoad[i],
+        enter: function(direction){
+          if (this.element.getElementsByTagName('video')){
+            if ($(this.element).find('video').attr('data-src')) {
+              var source = $(this.element).find('video').attr("data-src");
+              $(this.element).find('video').removeAttr("data-src");
+              $(this.element).find('video').attr('src', source);
+            }
+            if(! this.element.classList.contains('up-and-in-b')){
+              this.element.classList.add('up-and-in-b');
+            }
+            this.element.getElementsByTagName('video')[0].play();
+            if (this.element.getElementsByTagName('video')[0].classList.contains('boomerang')){
+              console.log('boomerang');
+              var video = this.element.getElementsByTagName('video')[0];
+              video.removeAttribute('loop');
+            }
+          }
+        },
+        exited: function () {
+          this.element.getElementsByTagName('video')[0].pause();
+        }
+      });
+    }
+
+
+
+    // var inview = new Waypoint.Inview({
+    //   element: $('.lazy-load-video-module')[0],
+    //   enter: function(direction) {
+    //     console.log('Enter triggered with direction ' + direction)
+    //   }
+    // })
 
 
 

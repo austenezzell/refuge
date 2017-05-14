@@ -20,8 +20,8 @@
     "waypoints": {
       "main": [
         "lib/jquery.waypoints.js",
-        "lib/shortcuts/inview.min.js",
-        "lib/shortcuts/sticky.min.js"
+        "lib/shortcuts/inview.min.js"
       ]
     }
+  }
 }

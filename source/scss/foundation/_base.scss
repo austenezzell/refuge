@@ -47,3 +47,17 @@ img, video {
   // background: $gray-gradient;
   background: black;
 }
+
+.lazy-load {
+  opacity: 0;
+  transform: rotateY(100px);
+  transition: all 1s;
+  video, img {
+    opacity: 0;
+  }
+}
+// .inview {
+//   opacity: 1;
+//   transform: rotateY(0px);
+//   transition: all 1s;
+// }

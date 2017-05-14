@@ -2,9 +2,14 @@
   Place styles specific to the Portfolio Page in here.
 */
 .work-page {
+  
   .work-module {
-    padding-top: $base-spacing * 8;
-    padding-bottom: $base-spacing * 4;
+    padding-top: $base-spacing * 4;
+    padding-bottom: $base-spacing * 2;
+    @include breakpoint(md){
+      padding-top: $base-spacing * 8;
+      padding-bottom: $base-spacing * 4;
+    }
   }
   .hamburger {
     z-index: 8
@@ -14,5 +19,26 @@
   }
   .site-title {
     display: none;
+  }
+}
+
+ul.credits {
+  padding: 0;
+  li {
+    width: 100%;
+    position: relative;
+    list-style: none;
+    padding: 0;
+    span.name {
+      padding-left: 10px;
+
+    }
+  }
+}
+
+.two-col {
+  column-count: 1;
+  @include breakpoint(md){
+    column-count: 2;
   }
 }

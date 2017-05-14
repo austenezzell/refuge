@@ -64,6 +64,10 @@
           }
         }
 
+        .padding-#{$side}-#{$breakpoint}-0 {
+          padding-#{$sides}: 0;
+        }
+
         .margin-#{$side}-#{$breakpoint}-0 {
           margin-#{$sides}: 0;
         }

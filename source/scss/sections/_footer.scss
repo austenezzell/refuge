@@ -28,6 +28,8 @@ footer {
   padding-top: $base-spacing * 20;
 }
 a.next {
+  color: white;
+  mix-blend-mode: difference;
   &:hover {
     text-decoration: none;
     .h1 {

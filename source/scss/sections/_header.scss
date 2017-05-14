@@ -37,12 +37,26 @@ a.hamburger {
     position: absolute;
     left: 0;
     top: 0;
-    transition: transform, .2s;
+    transition: all, .2s;
   }
   .line-2 {
     top: 8px;
   }
 }
+
+.work-page {
+  a.hamburger {
+    .line {
+      width: 0;
+    }
+  }
+  a.hamburger.on {
+    .line {
+      width: 100%;
+    }
+  }
+}
+
 .activeNav {
   a.hamburger {
     .line-1 {

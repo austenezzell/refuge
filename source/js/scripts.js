@@ -258,157 +258,192 @@ var aeApp = aeApp || {};
   (function($, window, document) {
     aeApp.onload();
 
-    // var waypoint = new Waypoint({
-    //   element: document.getElementById('case-study'),
-    //   handler: function(direction) {
-    //     console.log('Scrolled to waypoint!')
-    //   }
-    // })
 
-    // var lazyLoad = $('.lazy-load-video-module');
-    //
-    // var waypoint = new Waypoint.Inview({
-    //   element: lazyLoad,
-    //   enter: function () {
-    //     console.log('on');
-    //   },
-    //   exited: function () {
-    //     console.log('off');
-    //   }
-    // });
 
-    var lazyLoad = document.getElementsByClassName('lazy-load');
 
-    for (var i = 0; i < lazyLoad.length; i++) {
+    if (document.querySelector('.primary-video')) {
+      var primaryVideo = document.querySelector('.primary-video');
+
       var inview = new Waypoint.Inview({
-        element: lazyLoad[i],
-        enter: function(direction){
-          if (this.element.getElementsByTagName('video')){
-            if ($(this.element).find('video').attr('data-src')) {
-              var source = $(this.element).find('video').attr("data-src");
-              $(this.element).find('video').removeAttr("data-src");
-              $(this.element).find('video').attr('src', source);
-            }
-            if(! this.element.classList.contains('up-and-in-b')){
-              this.element.classList.add('up-and-in-b');
-            }
-            this.element.getElementsByTagName('video')[0].play();
-            if (this.element.getElementsByTagName('video')[0].classList.contains('boomerang')){
-              console.log('boomerang');
-              var video = this.element.getElementsByTagName('video')[0];
-              video.removeAttribute('loop');
-            }
+        element: primaryVideo,
+        enter: function () {
+          if (document.querySelector('.hamburger').classList.contains('on')) {
+            document.querySelector('.hamburger').classList.remove('on');
           }
         },
         exited: function () {
-          this.element.getElementsByTagName('video')[0].pause();
+          console.log('add class on to hamburber');
+          document.querySelector('.hamburger').classList.add('on');
         }
       });
     }
 
 
 
-    // var inview = new Waypoint.Inview({
-    //   element: $('.lazy-load-video-module')[0],
-    //   enter: function(direction) {
-    //     console.log('Enter triggered with direction ' + direction)
-    //   }
-    // })
 
 
 
-    // require([
-    //   'lib/waypoints',
-    //   'lib/waypoints.inview'
-    // ], function () {
-    //   'use strict';
-    //   var parallaxes = 0;
-    //
-    //   function Parallax(trigger) {
-    //     var parent;
-    //
-    //     function getTriggerId() {
-    //       return trigger.getAttribute('id');
-    //     }
-    //
-    //     if (getTriggerId() === null) {
-    //       trigger.setAttribute('id', 'waypoint-' + parallaxes);
-    //       parallaxes += 1;
-    //     }
-    //
-    //     parent = document.getElementById(getTriggerId());
-    //
-    //     if (!parent) {return false;}
-    //
-    //     var delta;
-    //     var parallaxCount;
-    //     var parallaxing;
-    //     var body;
-    //     var container;
-    //     var layerBack;
-    //     var layerFront;
-    //
-    //     function isScrolling(back, front) {
-    //       // back.style.transform = 'translateY(' + (parallaxCount * 10) + '%)';
-    //       front.style.transform = 'translateY(' + (parallaxCount * 300) + '%)';
-    //     }
-    //
-    //     parallaxCount = 0;
-    //     parallaxing = false;
-    //     body = document.body;
-    //     container = parent;
-    //     layerBack = container.querySelector('.Parallax-layer--back');
-    //     layerFront = container.querySelector('.Parallax-layer--front');
-    //
-    //     var layerFrontHeight = (layerFront.clientHeight);
-    //     var topPosition = ((layerFrontHeight / 2) * -1);
-    //     // layerFront.style.top = '50%';
-    //     // layerFront.style.bottom = topPosition + 'px';
-    //     layerFront.style.bottom = topPosition + 'px';
-    //
-    //     window.addEventListener('mousewheel', function (e) {
-    //       delta = e.wheelDelta < 0
-    //         ? 'down'
-    //         : 'up';
-    //     });
-    //
-    //     window.addEventListener('scroll', function () {
-    //       var top = body.scrollTop;
-    //       var height = window.innerHeight - body.clientHeight;
-    //       var scrollPosition = Math.abs(top / height);
-    //
-    //       parallaxCount = scrollPosition * -1;
-    //
-    //       if (parallaxing === true) {
-    //         if (delta === 'up') {
-    //           isScrolling(layerBack, layerFront);
-    //         }
-    //         else if (delta === 'down') {
-    //           isScrolling(layerBack, layerFront);
-    //         }
-    //       }
-    //     });
-    //
-    //     var waypoint = new Waypoint.Inview({
-    //       element: container,
-    //       enter: function () {
-    //         parallaxing = true;
-    //       },
-    //       exited: function () {
-    //         parallaxing = false;
-    //       }
-    //     });
-    //   }
-    //
-    //   var parallaxTriggers = document.querySelectorAll('.parallax-trigger');
-    //
-    //   // convert nodelist to array
-    //   var parallaxTriggerArray = Array.prototype.slice.call(parallaxTriggers);
-    //
-    //   parallaxTriggerArray.forEach(function (waypoint) {
-    //     Parallax(waypoint);
-    //   });
-    // });
+
+
+
+
+
+
+
+    var lazyLoad = document.getElementsByClassName('lazy-load');
+    var source,
+        video,
+        nextModule,
+        nextSource,
+        activeModule,
+        firstLazyLoad,
+        source;
+
+    if (document.getElementsByClassName('lazy-load')[0]) {
+      var firstLazyLoad = document.getElementsByClassName('lazy-load')[0];
+      var source = firstLazyLoad.getElementsByTagName('video')[0].getAttribute('data-src');
+      firstLazyLoad.getElementsByTagName('video')[0].removeAttribute("data-src");
+      firstLazyLoad.getElementsByTagName('video')[0].setAttribute('src', source);
+      for (var i = 0; i < lazyLoad.length; i++) {
+        var inview = new Waypoint.Inview({
+          element: lazyLoad[i],
+          enter: function(direction){
+            activeModule = this.element;
+            inViewPort(activeModule);
+            if (activeModule.nextElementSibling) {
+              if (activeModule.nextElementSibling.classList.contains('lazy-load')) {
+                var activeModule = activeModule.nextElementSibling;
+                preloadNextUp(activeModule);
+              }
+            }
+          },
+          exited: function () {
+            this.element.getElementsByTagName('video')[0].pause();
+          }
+        });
+      }
+      var inViewPort = function(activeModule){
+        if (activeModule.getElementsByTagName('video')) {
+          lazyLoadContent('video', activeModule);
+        } else if (activeModule.getElementsByTagName('img')) {
+          lazyLoadContent('img', activeModule);
+        }
+        if(! activeModule.classList.contains('up-and-in-b')){
+          activeModule.classList.add('up-and-in-b');
+        }
+      }
+
+      var preloadNextUp = function(activeModule){
+        if (activeModule.getElementsByTagName('video')) {
+          lazyLoadContent('video', activeModule);
+        } else if (activeModule.getElementsByTagName('img')) {
+          lazyLoadContent('img', activeModule);
+        }
+      }
+    }
+
+
+    var lazyLoadContent = function(contentType, activeModule){
+      if (activeModule.getElementsByTagName(contentType)){
+        if (activeModule.getElementsByTagName(contentType)[0].getAttribute('data-src')) {
+          var source = activeModule.getElementsByTagName(contentType)[0].getAttribute('data-src');
+          activeModule.getElementsByTagName(contentType)[0].removeAttribute('data-src');
+          activeModule.getElementsByTagName(contentType)[0].setAttribute('src', source);
+        }
+        activeModule.getElementsByTagName(contentType)[0].play();
+        // boomeragng video
+        // if (activeModule.getElementsByTagName(contentType)[0].classList.contains('boomerang')){
+        //   console.log('boomerang');
+        //   var video = activeModule.getElementsByTagName(contentType)[0];
+        //   video.removeAttribute('loop');
+        // }
+      }
+    }
+
+
+
+      // check withat the parent and container variables are
+      // use the container to select current slide in object
+      // https://github.com/CincoDesign/boa/blob/master/source/js/components/Parallax.js
+
+      var parallaxes = 0;
+
+      function Parallax(trigger) {
+        var parent;
+
+        function getTriggerId() {
+          return trigger.getAttribute('id');
+        }
+
+        if (getTriggerId() === null) {
+          trigger.setAttribute('id', 'waypoint-' + parallaxes);
+          parallaxes += 1;
+        }
+
+        parent = document.getElementById(getTriggerId());
+
+        if (!parent) {return false;}
+
+        var delta;
+        var parallaxCount;
+        var parallaxing;
+        var body;
+        var container;
+        var slideIn = document.querySelectorAll('.slide-in');
+
+        function isScrolling(slideIn) {
+          slideIn[0].style.transform = 'translateX(' + (parallaxCount * 30) + '%)';
+        }
+
+        parallaxCount = 0;
+        parallaxing = false;
+        body = document.body;
+        container = parent;
+
+
+        window.addEventListener('mousewheel', function (e) {
+          delta = e.wheelDelta < 0
+            ? 'down'
+            : 'up';
+        });
+
+        window.addEventListener('scroll', function () {
+          var top = body.scrollTop;
+          var height = window.innerHeight - body.clientHeight;
+          var scrollPosition = Math.abs(top / height);
+
+          parallaxCount = scrollPosition * -1;
+
+          if (parallaxing === true) {
+            if (delta === 'up') {
+              isScrolling(slideIn);
+            }
+            else if (delta === 'down') {
+              isScrolling(slideIn);
+            }
+          }
+        });
+
+        var waypoint = new Waypoint.Inview({
+          element: container,
+          enter: function () {
+            parallaxing = true;
+          },
+          exited: function () {
+            parallaxing = false;
+          }
+        });
+      }
+
+      var parallaxTriggers = document.querySelectorAll('.slide-in');
+
+      // convert nodelist to array
+      var parallaxTriggerArray = Array.prototype.slice.call(parallaxTriggers);
+
+      parallaxTriggerArray.forEach(function (waypoint) {
+        Parallax(waypoint);
+      });
+
 
 
 

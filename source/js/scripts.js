@@ -36,13 +36,13 @@ var aeApp = aeApp || {};
 
       if (scrollPosition <= 100) {
         $('.site-intro').css({
-          'transform': 'translateY(' + scrollPosition + 'px)',
-          'opacity': opacity
+          'opacity': opacity,
+          'visibility': 'visible'
         });
       } else if (scrollPosition > 100) {
         $('.site-intro').css({
-          'transform': '100px',
-          'opacity': 0
+          'opacity': 0,
+          'visibility': 'hidden'
         });
       }
     }

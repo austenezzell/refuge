@@ -26,8 +26,10 @@
   animation-delay: 1.6s;
 }
 .site-intro{
+  position: fixed;
   .up-and-in {
     transform: translateY(24px);
+    
   }
   p > a {
     text-decoration: none;

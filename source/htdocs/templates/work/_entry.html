@@ -1,0 +1,151 @@
+{% extends "_layout" %} {% block content %}
+<div class="work-page">
+
+  <head>
+    <a href="/" class="h4 site-title">hanour.</a>
+    <a href="#" class="hamburger">
+      <div class="line line-1"></div>
+      <div class="line line-2"></div>
+    </a>
+  </head>
+
+  <div class="main-content">
+
+    <section class="video-module wrap padding-x-xs-0 overflow-x-hidden primary-video">
+      <div class="row">
+        <div class="col-xs-12 portfolio-video-container">
+            <video autoplay class="portfolio-item portfolio-video " data-src="" src="{{ entry.video }}" poster=""></video>
+        </div>
+      </div>
+    </section>
+
+    <section id="case-study" class="work-module wrap">
+      <div class="row">
+        <div class=" col-xs-10 offset-xs-1 col-md-3 offset-md-1">
+          <h2>{{ entry.title }}</h2>
+          <h5 class="h4 underscore">{{ entry.projectType }}</h5>
+        </div>
+        <div class="col-xs-10 offset-xs-1 col-md-7 offset-md-1">
+          {{ entry.body }}
+        </div>
+      </div>
+    </section>
+
+
+    {% for block in entry.caseStudyModules %}
+      <!-- right image module -->
+      {% if block.type == "rightImage" %}
+        <section class="work-module right-img wrap padding-x-xs-0 overflow-x-hidden lazy-load">
+          <div class="row">
+            <div class=" col-xs-10 offset-xs-1 col-md-3 offset-md-1 align-middle-xs padding-top-xs-2x padding-top-md-0">
+                <h5 class="h4">{{ block.moduleHeader }}</h5>
+                <div>{{ block.moduleBody }}</div>
+            </div>
+            <div class="order-first-xs order-last-md col-xs-10 offset-xs-1 col-md-7 offset-md-1 align-middle-xs">
+              <div class="wipe">
+                {% set image = block.moduleImage.first() %}
+                {% if image %}
+                  <img class="portfolio-item" src="" data-src="{{ image.getUrl }}" alt="">
+                {% else %}
+                  {% set poster = block.moduleVideoPoster.first('sxiteenNine') %}
+                  {% if poster %}
+                    <video loop muted class="portfolio-item portfolio-video" data-src="{{ block.moduleVideo }}" src="#" poster="{{ poster.getUrl }}"></video>
+                  {% else %}
+                    <video loop muted class="portfolio-item portfolio-video" data-src="{{ block.moduleVideo }}" src="#" poster="/img/gradient.png"></video>
+                  {% endif %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </section>
+      {% endif %}
+
+      <!-- left image module -->
+      {% if block.type == "leftImage" %}
+        <section class="work-module right-img wrap padding-x-xs-0 overflow-x-hidden lazy-load">
+          <div class="row">
+            <div class=" col-xs-10 offset-xs-1 col-md-3 offset-md-1 align-middle-xs padding-top-xs-2x padding-top-md-0">
+                <h5 class="h4">{{ block.moduleHeader }}</h5>
+                <div>{{ block.moduleBody }}</div>
+            </div>
+            <div class="order-first-xs col-xs-10 offset-xs-1 offset-md-0 col-md-7 offset-md-1 align-middle-xs">
+              <div class="wipe">
+                {% set image = block.moduleImage.first() %}
+                {% if image %}
+                  <img class="portfolio-item" src="" data-src="{{ image.getUrl }}" alt="">
+                {% else %}
+                  {% set poster = block.moduleVideoPoster.first('sxiteenNine') %}
+                  {% if poster %}
+                    <video loop muted class="portfolio-item portfolio-video" data-src="{{ block.moduleVideo }}" src="#" poster="{{ poster.getUrl }}"></video>
+                  {% else %}
+                    <video loop muted class="portfolio-item portfolio-video" data-src="{{ block.moduleVideo }}" src="#" poster="/img/gradient.png"></video>
+                  {% endif %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </section>
+      {% endif %}
+
+      {% if block.type == "textModule" %}
+      <!-- 2 column text -->
+      <section class="work-module">
+        <div class="wrap">
+          <div class="row">
+            <div class="col col-xs-10 offset-xs-1 ">
+              <h5 class="h4">{{ block.moduleHeader }}</h5>
+              <div class="two-col">
+                {{ block.moduleBody }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {% endif %}
+
+      {% if block.type == "fullWidthImage" %}
+      <!-- full width img / video -->
+      <section class="work-module wrap padding-x-xs-0 overflow-x-hidden lazy-load">
+        <div class="row">
+          <div class="col-xs-12 wipe">
+            {% set image = block.moduleImage.first() %}
+            {% if image %}
+              <img class="portfolio-item" src="" data-src="{{ image.getUrl }}" alt="">
+            {% else %}
+              {% set poster = block.moduleVideoPoster.first('sxiteenNine') %}
+              {% if poster %}
+                <video loop muted class="portfolio-item portfolio-video" data-src="{{ block.moduleVideo }}" src="#" poster="{{ poster.getUrl }}"></video>
+              {% else %}
+                <video loop muted class="portfolio-item portfolio-video" data-src="{{ block.moduleVideo }}" src="#" poster="/img/gradient.png"></video>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      </section>
+      {% endif %}
+    {% endfor %}
+
+    {% if entry.credits %}
+
+      <!-- credits -->
+      <section class="work-module wrap padding-x-xs-0 overflow-x-hidden">
+        <div class="row">
+          <div class=" col-xs-10 offset-xs-1 padding-bottom-xs-2x">
+            <h5 class="h4 underscore">credits</h5>
+          </div>
+          <div class="col-xs-10 offset-xs-1 col-md-4 offset-md-1 ">
+            <ul class="credits">
+              {% for block in entry.credits %}
+                <li class="h4 margin-bottom-xs-2x credit">{{ block.moduleTitle }} <span class="name p">{{ block.moduleName }}</span></li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="col-xs-10 offset-xs-1 col-md-4 offset-md-1 ">
+            <ul class="credits credits-row-two"></ul>
+          </div>
+        </div>
+      </section>
+    {% endif %}
+
+
+  {% endblock %}

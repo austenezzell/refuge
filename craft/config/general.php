@@ -22,16 +22,28 @@ return array(
     /* Environment Variables */
     'environmentVariables' => array(
       'baseAssetUrl'  => 'http://localhost:8888',
-      'baseAssetPath' => '/users/austenezzell/Desktop/uno_craft/build',
-    )
-  ),
-  'cincodesign.cinco.io' => array(
-    'siteUrl' => 'http://cincodesign.cinco.io/',
-
-    /* Environment Variables */
-    'environmentVariables' => array(
-      'baseAssetUrl'  => '//cincodesign.cinco.io',
-      'baseAssetPath' => '/srv/www/cincodesign.cinco.io/build',
+      'baseAssetPath' => '/users/aezzell/Documents/websites/hanour/build',
     )
   )
 );
+
+
+
+// return array(
+//
+//   '*' => array(
+//     'omitScriptNameInUrls' => true,
+//     'defaultImageQuality' => 90,
+//     'maxUploadFileSize' => 33554432,
+//   ),
+//     '138.68.12.58' => array(
+//     'devMode' => true,
+//     'siteUrl' => 'http://138.68.12.58/',
+//
+//     /* Environment Variables */
+//     'environmentVariables' => array(
+//       'baseAssetUrl'  => '//138.68.12.58',
+//       'baseAssetPath' => '/var/www/html',
+//     )
+//   )
+// );

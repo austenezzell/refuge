@@ -10,6 +10,21 @@
   }
 }
 
+.text-line {
+  opacity: 0;
+}
+.text-line-1 {
+  animation: fade-in 1s ease forwards;
+  animation-delay: 1.2s;
+}
+.text-line-2 {
+  animation: fade-in 1s ease forwards;
+  animation-delay: 1.4s;
+}
+.text-line-3 {
+  animation: fade-in 1s ease forwards;
+  animation-delay: 1.6s;
+}
 .site-intro{
   .up-and-in {
     transform: translateY(24px);
@@ -22,9 +37,17 @@
   }
 }
 
+.case-study-link.active {
+  .underscore:before {
+    // animation: underscore-tron 1s ease alternate-reverse;
+    animation: underscore-tron .6s 2 ease-in forwards;
+
+  }
+}
 .underscore {
   padding-left: 48px;
   position: relative;
+  overflow: hidden;
   &:before {
     content: '';
     position: absolute;
@@ -64,19 +87,25 @@
       display: none;
     }
   }
+  .client {
+    position: absolute;
+    top: -38px;
+    z-index: 2;
+    overflow: hidden;
+    @include breakpoint(sm){
+      top: -78px;
+    }
+    h3 {
+      transform: translateY(150px);
+    }
+  }
+  .text-content {
+    position: relative;
+    opacity: 0;
+  }
 }
 
-.client {
-  position: absolute;
-  top: -36px;
-  z-index: 2;
-  @include breakpoint(sm){
-    top: -50px;
-  }
-  @include breakpoint(md){
-    top: -56px;
-  }
-}
+
 
 .left-img .client {
   left: 13px;

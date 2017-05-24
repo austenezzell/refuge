@@ -30,7 +30,6 @@ return array(
 );
 
 
-
 // return array(
 //   '*' => array(
 //     'tablePrefix' => 'craft',

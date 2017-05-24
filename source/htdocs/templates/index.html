@@ -14,162 +14,52 @@
     <section class="wrap padding-x-xs-0 overflow-x-hidden">
       <div class="row vh-full">
         <div class="col col-xs-10 offset-xs-1 align-middle-xs site-intro">
-          <p class="up-and-in"><a href="/info/">Director. Designer. Creative.</a><br>Shoot Mag top 5 up-and-coming.</p>
+          <p class="up-and-in">
+            <a href="/info/">
+
+              <span class="text-line text-line-1">{{ siteName }}.</span><br>
+              <span class="text-line text-line-2">{{ entry.intro }}</span>
+            </a><br>
+            <a href="/info#press">
+              <span class="text-line text-line-3">{{ entry.featuredPress }}</span>
+            </a>
+          </p>
         </div>
       </div>
     </section>
 
     <div class="work" id="work">
-
-      <section class="text-img-module right-img wrap padding-x-xs-0 overflow-x-hidden lazy-load">
-        <div class="row">
-          <div class=" col-xs-10 offset-xs-1 col-md-3 offset-md-1 align-middle-xs">
-            <a href="#">
-              <h2>hero</h2>
-              <h5 class="h4 underscore">commercial</h5>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam  esse molestie consequat, vel.</p>
-              <a href="/work/samsung.html" class="mobile-cta h5">watch it</a>
-            </a>
-          </div>
-          <div class="order-first-xs order-last-md col-xs-10 offset-xs-1 col-md-7 offset-md-1 align-middle-xs">
-            <div class="case-study-container">
-              <div class="client slide-in">
-                <a href="/work/samsung.html"><h3 class="h1">samsung</h3></a>
-              </div>
-              <a href="/work/samsung.html" class="margin-bottom-xs-1x margin-bottom-md-0">
-                <video loop muted class="portfolio-item portfolio-video" data-src="https://player.vimeo.com/external/165058959.hd.mp4?s=24e1498aa5dc1c9f5016162096c8dbc6a033ff1c&profile_id=174" src="" poster="/img/gradient_ph_16_10.png"></video>
+      {% for entry in craft.entries.section('work').order('postdate desc').limit(null) %}
+        <section class="left-img text-img-module wrap padding-x-xs-0 overflow-x-hidden lazy-load case-study-link">
+          <div class="row">
+            <div class=" col-xs-10 offset-xs-1 col-md-3 offset-md-1 align-middle-xs text-content">
+              <a href="#">
+                <h2>{{ entry.title }}</h2>
+                <h5 class="h4 underscore">{{ entry.projectType }}</h5>
+                <p>{{ entry.projectSummary }}</p>
+                <a href="{{ entry.url }}" class="mobile-cta h5">view</a>
               </a>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="text-img-module left-img wrap padding-x-xs-0 overflow-x-hidden lazy-load">
-        <div class="row">
-          <div class=" col-xs-10 offset-xs-1 col-md-3 offset-md-1 align-middle-xs">
-            <a href="#">
-              <h2>hero</h2>
-              <h5 class="h4 underscore">commercial</h5>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam  esse molestie consequat, vel.</p>
-              <a href="/work/samsung.html" class="mobile-cta h5">watch it</a>
-            </a>
-          </div>
-          <div class="order-first-xs col-xs-10 offset-xs-1 col-md-7 offset-md-0 align-middle-xs">
-            <div class="case-study-container">
-              <div class="client slide-in">
-                <a href="#"><h3 class="h1">samsung</h3></a>
+            <div class="title-and-thumbnail order-first-xs col-xs-10 offset-xs-1 col-md-7 offset-md-0 align-middle-xs">
+              <div class="case-study-container">
+                <div class="client slide-in">
+                  <a href="{{ entry.url }}"><h3 class="h1">{{ entry.client }}</h3></a>
+                </div>
+                <a href="{{ entry.url }}" class="margin-bottom-xs-1x margin-bottom-md-0 wipe">
+                  {% set trailerPoster = entry.trailerPoster.first('sxiteenTen') %}
+                  {% if trailerPoster %}
+                    <video loop muted class="portfolio-item" data-src="{{ entry.trailer }}" src="#" poster="{{ trailerPoster.getUrl }}"></video>
+                  {% else %}
+                    <video loop muted class="portfolio-item" data-src="{{ entry.trailer }}" src="#" poster="/img/gradient.png"></video>
+                  {% endif %}
+                </a>
               </div>
-              <a href="#" class="margin-bottom-xs-1x margin-bottom-md-0">
-                <video loop muted class="portfolio-item portfolio-video" data-src="https://player.vimeo.com/external/181694434.hd.mp4?s=6621fb732ddaf96e4ca1ee31d3c0f794fcfe8d9b&profile_id=119" src="" poster="/img/gradient_ph_16_10.png"></video>
-              </a>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section class="text-img-module right-img wrap padding-x-xs-0 overflow-x-hidden lazy-load">
-        <div class="row">
-          <div class=" col-xs-10 offset-xs-1 col-md-3 offset-md-1 align-middle-xs">
-            <a href="#">
-              <h2>hero</h2>
-              <h5 class="h4 underscore">commercial</h5>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam  esse molestie consequat, vel.</p>
-              <a href="/work/samsung.html" class="mobile-cta h5">watch it</a>
-            </a>
-          </div>
-          <div class="order-first-xs order-last-md col-xs-10 offset-xs-1 col-md-7 offset-md-1 align-middle-xs">
-            <div class="case-study-container">
-              <div class="client slide-in">
-                <a href="/work/samsung.html"><h3 class="h1">samsung</h3></a>
-              </div>
-              <a href="/work/samsung.html" class="margin-bottom-xs-1x margin-bottom-md-0">
-                <video loop muted class="portfolio-item portfolio-video" data-src="https://player.vimeo.com/external/165058959.hd.mp4?s=24e1498aa5dc1c9f5016162096c8dbc6a033ff1c&profile_id=174" src="" poster="/img/gradient_ph_16_10.png"></video>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="text-img-module left-img wrap padding-x-xs-0 overflow-x-hidden lazy-load">
-        <div class="row">
-          <div class=" col-xs-10 offset-xs-1 col-md-3 offset-md-1 align-middle-xs">
-            <a href="#">
-              <h2>hero</h2>
-              <h5 class="h4 underscore">commercial</h5>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam  esse molestie consequat, vel.</p>
-              <a href="/work/samsung.html" class="mobile-cta h5">watch it</a>
-            </a>
-          </div>
-          <div class="order-first-xs col-xs-10 offset-xs-1 col-md-7 offset-md-0 align-middle-xs">
-            <div class="case-study-container">
-              <div class="client slide-in">
-                <a href="#"><h3 class="h1">samsung</h3></a>
-              </div>
-              <a href="#" class="margin-bottom-xs-1x margin-bottom-md-0">
-                <video loop muted class="portfolio-item portfolio-video" data-src="https://player.vimeo.com/external/181694434.hd.mp4?s=6621fb732ddaf96e4ca1ee31d3c0f794fcfe8d9b&profile_id=119" src="" poster="/img/gradient_ph_16_10.png"></video>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="text-img-module right-img wrap padding-x-xs-0 overflow-x-hidden lazy-load">
-        <div class="row">
-          <div class=" col-xs-10 offset-xs-1 col-md-3 offset-md-1 align-middle-xs">
-            <a href="#">
-              <h2>hero</h2>
-              <h5 class="h4 underscore">commercial</h5>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam  esse molestie consequat, vel.</p>
-              <a href="/work/samsung.html" class="mobile-cta h5">watch it</a>
-            </a>
-          </div>
-          <div class="order-first-xs order-last-md col-xs-10 offset-xs-1 col-md-7 offset-md-1 align-middle-xs">
-            <div class="case-study-container">
-              <div class="client slide-in">
-                <a href="/work/samsung.html"><h3 class="h1">samsung</h3></a>
-              </div>
-              <a href="/work/samsung.html" class="margin-bottom-xs-1x margin-bottom-md-0">
-                <video loop muted class="portfolio-item portfolio-video" data-src="https://player.vimeo.com/external/165058959.hd.mp4?s=24e1498aa5dc1c9f5016162096c8dbc6a033ff1c&profile_id=174" src="" poster="/img/gradient_ph_16_10.png"></video>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="text-img-module left-img wrap padding-x-xs-0 overflow-x-hidden lazy-load">
-        <div class="row">
-          <div class=" col-xs-10 offset-xs-1 col-md-3 offset-md-1 align-middle-xs">
-            <a href="#">
-              <h2>hero</h2>
-              <h5 class="h4 underscore">commercial</h5>
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam  esse molestie consequat, vel.</p>
-              <a href="/work/samsung.html" class="mobile-cta h5">watch it</a>
-            </a>
-          </div>
-          <div class="order-first-xs col-xs-10 offset-xs-1 col-md-7 offset-md-0 align-middle-xs">
-            <div class="case-study-container">
-              <div class="client slide-in">
-                <a href="#"><h3 class="h1">samsung</h3></a>
-              </div>
-              <a href="#" class="margin-bottom-xs-1x margin-bottom-md-0">
-                <video loop muted class="portfolio-item portfolio-video" data-src="https://player.vimeo.com/external/181694434.hd.mp4?s=6621fb732ddaf96e4ca1ee31d3c0f794fcfe8d9b&profile_id=119" src="" poster="/img/gradient_ph_16_10.png"></video>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>            
-
+        </section>
+      {% endfor %}
     </div>
 
-    <!-- <section class="padding-y-xs-3x wrap">
-      <div class="row ">
-        <div class="col-xs-10 offset-xs-1 col-md-4 offset-md-1 align-middle-xs">
-          <h2>{{ entry.title }}</h2>
-        </div>
-        <div class="col-xs-10 offset-xs-1 col-md-5 offset-md-0 align-middle-xs">
-          <div class="body-copy">{{ entry.body }}</div>
-        </div>
-      </div>
-    </section> -->
+
 
   {% endblock %}

@@ -2,7 +2,6 @@
   Place styles specific to the Portfolio Page in here.
 */
 .work-page {
-  
   .work-module {
     padding-top: $base-spacing * 4;
     padding-bottom: $base-spacing * 2;
@@ -40,5 +39,33 @@ ul.credits {
   column-count: 1;
   @include breakpoint(md){
     column-count: 2;
+  }
+}
+
+.portfolio-video-container {
+  cursor: pointer;
+  position: relative;
+  &.paused {
+    &:after {
+      content:'paused';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -90px;
+      margin-top: -37px;
+      height: 74px;
+      width: 180px;
+      z-index: 10;
+      @extend .h2;
+      background: white;
+      text-align: center;
+      padding: 14px;
+      @include breakpoint(sm){
+          height: 94px;
+          width: 240px;
+          margin-left: -140px;
+          margin-top: -47px;
+      }
+    }
   }
 }

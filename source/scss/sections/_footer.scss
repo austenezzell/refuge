@@ -8,14 +8,15 @@ footer {
   left: 0;
   width: 100%;
   background: white;
-  padding: $base-spacing * 4 0 $base-spacing;
+  padding: $base-spacing * 4 0 0;
   height: 634px;
   @include breakpoint(md){
-    padding: $base-spacing * 4 0
+    padding: $base-spacing * 4 0;
   }
+
   .footer-title {
     position: relative;
-    top: 60px;
+    top: 30px;
     color: white;
     mix-blend-mode: difference;
     @include breakpoint(md){
@@ -24,16 +25,21 @@ footer {
   }
 }
 
-.work-footer {
-  padding-top: $base-spacing * 20;
-}
-a.next {
-  color: white;
-  mix-blend-mode: difference;
-  &:hover {
-    text-decoration: none;
-    .h1 {
-      color: $color-gray;
-    }
-  }
+// .work-footer {
+//   padding-top: $base-spacing * 20;
+// }
+// a.next {
+//   color: white;
+//   mix-blend-mode: difference;
+//   &:hover {
+//     text-decoration: none;
+//     .h1 {
+//       color: $color-gray;
+//     }
+//   }
+// }
+
+.footer-content {
+  height: 494px;
+
 }

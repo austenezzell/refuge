@@ -49,13 +49,50 @@ img, video {
 }
 
 .lazy-load {
-  opacity: 0;
-  transform: rotateY(100px);
-  transition: all 1s;
+  // opacity: 0;
+  // transform: rotateY(100px);
+  // transition: all 1s;
   video, img {
     opacity: 0;
   }
 }
+
+.wipe {
+  position: relative;
+  background: $warm-cool;
+  transition: max-height 0.25s ease-in;
+  max-height: 0;
+  overflow: hidden;
+  img, video {
+    // opacity: 0;
+    // visibility: hidden;
+  }
+}
+
+.animate-in {
+  // animation: up-and-in-b 1s ease forwards;
+  // animation-delay: .5s;
+  .client {
+    h3 {
+      animation: translate-up-100 .5s ease forwards;
+      animation-delay: 1s;
+    }
+  }
+  .wipe {
+    animation: animate-height 1.5s ease forwards;
+    animation-delay: .5s;
+    font-size: 0;
+    img, video {
+      animation: fade-up 2s ease forwards;
+      animation-delay: 1.3s;
+    }
+  }
+  .text-content {
+    animation: fade-up 1.5s ease forwards;
+    animation-delay: 2s;
+  }
+}
+
 // .inview {
 //   opacity: 1;
 //   transform: rotateY(0px);

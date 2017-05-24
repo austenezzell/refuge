@@ -1,5 +1,5 @@
   <ul>
-    <li><a href="#" class="h4">twitter</a></li>
-    <li><a href="#" class="h4">instagram</a></li>
-    <li><a href="#" class="h4">vimeo</a></li>
+    {% for block in footer.social %}
+      <li><a href="{{ block.socialLink }}" target="_blank" class="h4">{{ block.socialChannel }}</a></li>
+    {% endfor %}
   </ul>

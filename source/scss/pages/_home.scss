@@ -27,9 +27,10 @@
 }
 .site-intro{
   position: fixed;
+  top:50%;
+  margin-top: -60px;
   .up-and-in {
     transform: translateY(24px);
-    
   }
   p > a {
     text-decoration: none;

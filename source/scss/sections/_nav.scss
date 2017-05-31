@@ -13,6 +13,7 @@
   height: 100%;
   width: 100%;
   background: white;
+  // background: #6bfcde;
   li {
     transform: translateY(40px);
     opacity: 0;
@@ -81,6 +82,8 @@
     // display: block;
     opacity: 1;
     visibility: visible;
+    // background: $gray-gradient;
+    // transition: background 3s;
     li {
       transform: translate3d(0, 0px, 0);
       opacity: 1;

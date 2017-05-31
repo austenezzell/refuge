@@ -1,6 +1,6 @@
 {% extends "_layout" %} {% block content %}
 <div class="home-page">
-
+  <div class="transition"></div>
   <head>
     <a href="/" class="h4 site-title">hanour.</a>
     <a href="#" class="hamburger">
@@ -16,7 +16,6 @@
         <div class="col col-xs-10 offset-xs-1 align-middle-xs site-intro">
           <p class="up-and-in">
             <a href="/info/">
-
               <span class="text-line text-line-1">{{ siteName }}.</span><br>
               <span class="text-line text-line-2">{{ entry.intro }}</span>
             </a><br>
@@ -33,7 +32,7 @@
         <section class="left-img text-img-module wrap padding-x-xs-0 overflow-x-hidden lazy-load case-study-link">
           <div class="row">
             <div class=" col-xs-10 offset-xs-1 col-md-3 offset-md-1 align-middle-xs text-content">
-              <a href="#">
+              <a href="{{ entry.url }}">
                 <h2>{{ entry.title }}</h2>
                 <h5 class="h4 underscore">{{ entry.projectType }}</h5>
                 <p>{{ entry.projectSummary }}</p>

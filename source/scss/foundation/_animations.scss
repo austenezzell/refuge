@@ -11,6 +11,15 @@
   }
 }
 
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .a-fadeIn {
   animation: fade-in 500ms ease forwards;
 }
@@ -61,7 +70,16 @@
   }
 }
 
-@keyframes animate-height {
+@keyframes wipe {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes animate-max-height {
   0% {
     max-height: 0;
   }

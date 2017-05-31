@@ -154,7 +154,8 @@ var aeApp = aeApp || {};
       inViewPort = function(activeModule){
         if (activeModule.getElementsByTagName('video')[0]) {
           lazyLoadContent('video', activeModule);
-        } else if (activeModule.getElementsByTagName('img')[0]) {
+        }
+        if (activeModule.getElementsByTagName('img')[0]) {
           lazyLoadContent('img', activeModule);
         }
         if(! activeModule.classList.contains('animate-in')){
@@ -214,16 +215,30 @@ var aeApp = aeApp || {};
       }
     }
 
-    var waypoint = new Waypoint({
-      element: $('.section-change'),
-      handler: function(direction) {
-        if (direction == 'down') {
-          $('.to-white').addClass('on');
-        } else {
-          $('.to-white').removeClass('on');
-        }
-      },
-      offset: '50%'
-    })
+    if (document.querySelector('.section-change')) {
+      var waypoint = new Waypoint({
+        element: $('.section-change'),
+        handler: function(direction) {
+          if (direction == 'down') {
+            $('.to-white').addClass('on');
+          } else {
+            $('.to-white').removeClass('on');
+          }
+        },
+        offset: '50%'
+      })
+    }
+
+    var href;
+    if (document.querySelector('#work')) {
+      $('#work a').click(function(e){
+        e.preventDefault();
+        href = e.target.parentNode;
+        $('body').addClass('home-transitioning');
+        setTimeout(function(){
+          window.location.href = href;
+        }, 300);
+      })
+    }
 
   }(window.jQuery, window, document));

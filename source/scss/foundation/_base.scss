@@ -53,25 +53,55 @@ img, video {
   // transform: rotateY(100px);
   // transition: all 1s;
   video, img {
+    // opacity: 0;
+  }
+}
+
+.first-wipe {
+  position: relative;
+  overflow: hidden;
+  &:before {
+    content: '';
+    position: absolute;
+    bottom:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(100%);
+    background: $gray-gradient;
+    z-index: 999;
+    animation: wipe 1s ease forwards;
+    animation-delay: .4s;
+  }
+  img, video {
     opacity: 0;
+    animation: fade-in .6s ease forwards;
+    animation-delay: .7s;
   }
 }
 
 .wipe {
   position: relative;
-  background: $warm-cool;
   transition: max-height 0.25s ease-in;
-  max-height: 0;
-  overflow: hidden;
+  &:before {
+    content: '';
+    position: absolute;
+    bottom:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(100%);
+    background: $gray-gradient;
+    z-index: 999;
+  }
   img, video {
-    // opacity: 0;
-    // visibility: hidden;
+    opacity: 0;
   }
 }
 
 .animate-in {
   // animation: up-and-in-b 1s ease forwards;
-  // animation-delay: .5s;
+  // animation-delay: 0s;
   .client {
     h3 {
       animation: translate-up-100 .5s ease forwards;
@@ -79,19 +109,57 @@ img, video {
     }
   }
   .wipe {
-    animation: animate-height 1.5s ease forwards;
-    animation-delay: .5s;
     font-size: 0;
+    overflow: hidden;
+    &:before {
+      animation: wipe 1s ease forwards;
+      animation-delay: .4s;
+    }
     img, video {
-      animation: fade-up 2s ease forwards;
-      animation-delay: 1.3s;
+      animation: fade-in .6s ease forwards;
+      animation-delay: .7s;
     }
   }
   .text-content {
+    opacity: 0;
     animation: fade-up 1.5s ease forwards;
     animation-delay: 2s;
   }
 }
+.work-page {
+  .transition {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+    background: $gray-gradient;
+    position: fixed;
+    animation: fade-out 2s ease forwards;
+    pointer-events: none;
+    animation-delay: .5s;
+  }
+}
+.home-page, .info-page {
+  .transition {
+    background: $gray-gradient;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    z-index: 9999;
+    transition: width .3s;
+  }
+}
+.home-transitioning {
+  .transition {
+    width: 100%;
+  }
+}
+
+
+
 
 // .inview {
 //   opacity: 1;

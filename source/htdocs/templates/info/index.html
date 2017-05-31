@@ -1,5 +1,6 @@
 {% extends "_layout" %} {% block content %}
 <div class="info-page">
+  <div class="transition"></div>
   <head>
     <a href="/" class="h4 site-title">hanour.</a>
     <a href="#" class="hamburger">
@@ -10,22 +11,22 @@
 
   <div class="main-content">
 
-    <section class="intro-img-section right-img wrap padding-x-xs-0 overflow-x-hidden">
+    <section class="intro-img-section right-img wrap padding-x-xs-0 overflow-x-hidden ">
       <div class="row">
-        <div class=" col-xs-10 offset-xs-1 col-md-2 offset-md-1 align-top-xs padding-bottom-xs-2x">
+        <div class="text-content col-xs-10 offset-xs-1 col-md-2 offset-md-1 align-top-xs padding-bottom-xs-2x">
           <h5 class="h4 underscore">bio</h5>
         </div>
         <div class="col-xs-10 offset-xs-1 col-md-9 offset-md-0 align-middle-xs">
-          <div class="">
+          <div class="first-wipe">
             {% set portrait = entry.portrait.first() %}
             {% if portrait %}
-              <img src="{{ portrait.getUrl }}" alt="">
+              <img data-src="{{ portrait.getUrl }}" src="{{ portrait.getUrl }}" alt="">
             {% else %}
-              <img src="/img/ph/p_2.jpg" alt="">
+              <img data-src="/img/ph/p_2.jpg" src="/img/ph/p_2.jpg" alt="">
             {% endif %}
           </div>
           <div class="row">
-            <div class="col-xs-12 col-md-10 col-lg-8 col-xl-7">
+            <div class="text-content col-xs-12 col-md-10 col-lg-8 col-xl-7">
               <div class="margin-top-xs-4x">
                 {{ entry.body }}
               </div>
@@ -35,12 +36,12 @@
       </div>
     </section>
 
-    <section class="press wrap padding-x-xs-0 overflow-x-hidden" id="press">
+    <section class="press wrap padding-x-xs-0 overflow-x-hidden lazy-load" id="press">
       <div class="row">
-        <div class=" col-xs-10 offset-xs-1 col-md-2 offset-md-1 align-top-xs padding-bottom-xs-2x">
+        <div class="text-content col-xs-10 offset-xs-1 col-md-2 offset-md-1 align-top-xs padding-bottom-xs-2x">
           <h5 class="h4 underscore">press</h5>
         </div>
-        <div class="col-xs-10 offset-xs-1 col-md-9 offset-md-0 align-middle-xs">
+        <div class="text-content col-xs-10 offset-xs-1 col-md-9 offset-md-0 align-middle-xs">
           {% for block in entry.press %}
             <ul>
               <li>
@@ -55,8 +56,8 @@
       </div>
     </section>
 
-    <section class="contact-module wrap padding-x-xs-0 overflow-x-hidden">
-      <div class="row">
+    <section class="contact-module lazy-load wrap padding-x-xs-0 overflow-x-hidden">
+      <div class="row text-content">
         <div class=" col-xs-10 offset-xs-1 col-md-2 offset-md-1 align-top-xs padding-bottom-xs-2x">
           <h5 class="h4 underscore">contact</h5>
         </div>
@@ -79,7 +80,7 @@
         <section class="left-img text-img-module wrap padding-x-xs-0 overflow-x-hidden lazy-load case-study-link">
           <div class="row">
             <div class=" col-xs-10 offset-xs-1 col-md-3 offset-md-1 align-middle-xs text-content">
-              <a href="#">
+              <a href="{{ entry.url }}">
                 <h2>{{ entry.title }}</h2>
                 <h5 class="h4 underscore">{{ entry.projectType }}</h5>
                 <p>{{ entry.projectSummary }}</p>

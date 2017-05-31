@@ -26,9 +26,9 @@
   animation-delay: 1.6s;
 }
 .site-intro{
-  position: fixed;
-  top:50%;
-  margin-top: -60px;
+  // position: fixed;
+  // top:50%;
+  // margin-top: -60px;
   .up-and-in {
     transform: translateY(24px);
   }
@@ -93,7 +93,7 @@
   .client {
     position: absolute;
     top: -38px;
-    z-index: 2;
+    z-index: 9999;
     overflow: hidden;
     @include breakpoint(sm){
       top: -78px;

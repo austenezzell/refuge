@@ -144,10 +144,6 @@ var aeApp = aeApp || {};
         source = firstLazyLoad.getElementsByTagName('video')[0].getAttribute('data-src');
         firstLazyLoad.getElementsByTagName('video')[0].removeAttribute("data-src");
         firstLazyLoad.getElementsByTagName('video')[0].setAttribute('src', source);
-      } else if ((firstLazyLoad.getElementsByTagName('img')[0])) {
-        source = firstLazyLoad.getElementsByTagName('img')[0].getAttribute('data-src');
-        firstLazyLoad.getElementsByTagName('img')[0].removeAttribute("data-src");
-        firstLazyLoad.getElementsByTagName('img')[0].setAttribute('src', source);
       }
       for (var i = 0; i < lazyLoad.length; i++) {
         inview = new Waypoint.Inview({

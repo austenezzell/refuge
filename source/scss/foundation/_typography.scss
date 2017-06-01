@@ -7,7 +7,7 @@
 
 h1, .h1, .font-xl {
   @include font-size(lg);
-  font-weight: 600;
+  font-weight: 700;
   @include breakpoint(sm){
     @include font-size(xl);
   }
@@ -15,7 +15,7 @@ h1, .h1, .font-xl {
 
 h2, .h2, .font-lg {
   @include font-size(md);
-  font-weight: 600;
+  font-weight: 700;
   @include breakpoint(sm){
     @include font-size(lg);
   }
@@ -23,23 +23,23 @@ h2, .h2, .font-lg {
 
 h3, .h3, .font-md {
   @include font-size(md);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 h4, .h4, .font-sm {
   @include font-size(sm);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 h5, .h5, .font-xs {
   @include font-size(xs);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 p, .p {
   @include font-size(sm);
   line-height: $body-line-height;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .intro-text {

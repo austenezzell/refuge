@@ -57,6 +57,20 @@ a.hamburger {
   }
 }
 
+.home-page {
+  a.hamburger {
+    .line {
+      width: 0;
+      animation: width-full .4s ease forwards;
+      animation-delay: 3s;
+
+
+
+
+    }
+  }
+}
+
 .activeNav {
   a.hamburger {
     .line-1 {

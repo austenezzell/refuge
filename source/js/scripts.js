@@ -8,7 +8,13 @@ var aeApp = aeApp || {};
       $('.hamburger').click(function(e){
         e.preventDefault();
         if($('body').hasClass('activeNav')){
+          $('body').addClass('navOut');
           $('body').removeClass('activeNav');
+          setTimeout(function(){
+            $('body').removeClass('navOut');
+            $('body').removeClass('activeNav');
+          }, 400);
+
         } else {
           $('body').addClass('activeNav');
         }
@@ -18,6 +24,15 @@ var aeApp = aeApp || {};
           $('body').removeClass('activeNav');
         }
       });
+      $('.hidden-nav a').click(function(e){
+        e.preventDefault();
+        var href = e.target;
+        $('body').addClass('navOut');
+        setTimeout(function(){
+          window.location.href = href;
+          $('body').removeClass('activeNav');
+        }, 400);
+      })
   };
 
   aeApp.scrollThings = function(){
@@ -93,7 +108,9 @@ var aeApp = aeApp || {};
       inview = new Waypoint.Inview({
         element: portfolioVideo,
         exited: function () {
-          portfolioVideo.pause();
+          if (!(this.element.getElementsByTagName('video').paused || this.element.getElementsByTagName('video').ended)) {
+            portfolioVideo.pause();
+          }
           portfolioVideo.parentNode.classList.add('paused');
         }
       });

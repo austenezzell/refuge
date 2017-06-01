@@ -44,17 +44,11 @@ img, video {
   top: 0;
   width: 100%;
   height: 100%;
-  // background: $gray-gradient;
   background: black;
 }
 
 .lazy-load {
-  // opacity: 0;
-  // transform: rotateY(100px);
-  // transition: all 1s;
-  video, img {
-    // opacity: 0;
-  }
+  opacity: 0;
 }
 
 .first-wipe {
@@ -71,18 +65,18 @@ img, video {
     background: $gray-gradient;
     z-index: 999;
     animation: wipe 1s ease forwards;
-    animation-delay: .4s;
+    animation-delay: .7s;
   }
   img, video {
     opacity: 0;
     animation: fade-in .6s ease forwards;
-    animation-delay: .7s;
+    animation-delay: 1s;
   }
 }
 
 .wipe {
   position: relative;
-  transition: max-height 0.25s ease-in;
+  overflow: hidden;
   &:before {
     content: '';
     position: absolute;
@@ -100,8 +94,7 @@ img, video {
 }
 
 .animate-in {
-  // animation: up-and-in-b 1s ease forwards;
-  // animation-delay: 0s;
+  opacity: 1;
   .client {
     h3 {
       animation: translate-up-100 .5s ease forwards;
@@ -157,12 +150,3 @@ img, video {
     width: 100%;
   }
 }
-
-
-
-
-// .inview {
-//   opacity: 1;
-//   transform: rotateY(0px);
-//   transition: all 1s;
-// }

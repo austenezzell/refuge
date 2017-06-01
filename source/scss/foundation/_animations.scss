@@ -20,6 +20,15 @@
   }
 }
 
+@keyframes width-full {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
 .a-fadeIn {
   animation: fade-in 500ms ease forwards;
 }

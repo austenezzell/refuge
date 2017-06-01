@@ -38,10 +38,10 @@
 
     <section class="press wrap padding-x-xs-0 overflow-x-hidden lazy-load" id="press">
       <div class="row">
-        <div class="text-content col-xs-10 offset-xs-1 col-md-2 offset-md-1 align-top-xs padding-bottom-xs-2x">
+        <div class="text-only-content col-xs-10 offset-xs-1 col-md-2 offset-md-1 align-top-xs padding-bottom-xs-2x">
           <h5 class="h4 underscore">press</h5>
         </div>
-        <div class="text-content col-xs-10 offset-xs-1 col-md-9 offset-md-0 align-middle-xs">
+        <div class="text-only-content col-xs-10 offset-xs-1 col-md-9 offset-md-0 align-middle-xs">
           {% for block in entry.press %}
             <ul>
               <li>
@@ -57,7 +57,7 @@
     </section>
 
     <section class="contact-module lazy-load wrap padding-x-xs-0 overflow-x-hidden">
-      <div class="row text-content">
+      <div class="row text-only-content">
         <div class=" col-xs-10 offset-xs-1 col-md-2 offset-md-1 align-top-xs padding-bottom-xs-2x">
           <h5 class="h4 underscore">contact</h5>
         </div>
@@ -80,7 +80,7 @@
         <section class="left-img text-img-module wrap padding-x-xs-0 overflow-x-hidden lazy-load case-study-link">
           <div class="row">
             <div class=" col-xs-10 offset-xs-1 col-md-3 offset-md-1 align-middle-xs text-content">
-              <a href="{{ entry.url }}">
+              <a href="{{ entry.url }}" class="text-block move-left">
                 <h2>{{ entry.title }}</h2>
                 <h5 class="h4 underscore">{{ entry.projectType }}</h5>
                 <p>{{ entry.projectSummary }}</p>

@@ -40,13 +40,25 @@
   }
 }
 
-.case-study-link.active {
-  .underscore:before {
-    // animation: underscore-tron 1s ease alternate-reverse;
-    animation: underscore-tron .6s 2 ease-in forwards;
+.move-right {
+  animation: from-right .7s forwards;
+}
+.move-left {
+  animation: from-left .7s forwards;
+}
 
+.case-study-link.active-hover {
+  .move-right {
+    animation: move-right .7s forwards;
+  }
+  .move-left {
+    animation: move-left .7s forwards;
+  }
+  .underscore:before {
+    animation: underscore .7s 2 ease-out forwards;
   }
 }
+
 .underscore {
   padding-left: 48px;
   position: relative;
@@ -61,18 +73,17 @@
     top: 50%;
   }
 }
-.case-study-container {
 
-}
 .text-img-module {
   padding: 60px 0 100px;
   @include breakpoint(md){
     padding: 60px 0 240px;
   }
   h2 {
-    margin-bottom: $base-spacing / 2;
+    margin-bottom: $base-spacing;
+    line-height: 1;
     @include breakpoint(md){
-      margin-bottom: $base-spacing;
+      margin-bottom: $base-spacing * 1.5;
     }
   }
   a {

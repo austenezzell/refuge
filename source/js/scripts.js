@@ -103,7 +103,11 @@ var aeApp = aeApp || {};
         } else {
           portfolioVideo.play();
           portfolioVideo.parentNode.classList.remove('paused');
+          portfolioVideo.parentNode.classList.remove('ended');
         }
+      });
+      portfolioVideo.addEventListener('ended', function(){
+        portfolioVideo.parentNode.classList.add('ended');
       });
       inview = new Waypoint.Inview({
         element: portfolioVideo,
@@ -203,6 +207,9 @@ var aeApp = aeApp || {};
     }
 
     var caseStudyLinks;
+    var thumbnailMoudule;
+    var textBlock;
+
     var alternatingPosts = function(){
       caseStudyLinks = document.querySelectorAll('.case-study-link');
       for (var i = 0; i < caseStudyLinks.length; i++) {
@@ -210,6 +217,9 @@ var aeApp = aeApp || {};
           caseStudyLinks[i].classList.add('right-img');
           caseStudyLinks[i].classList.remove('left-img');
           thumbnailMoudule = caseStudyLinks[i].querySelector('.title-and-thumbnail');
+          textBlock = caseStudyLinks[i].querySelector('.text-block');
+          textBlock.classList.add('move-right');
+          textBlock.classList.remove('move-left');
           thumbnailMoudule.classList.remove('offset-md-0');
           thumbnailMoudule.classList.add('offset-md-1');
           thumbnailMoudule.classList.add('order-last-md');
@@ -248,6 +258,11 @@ var aeApp = aeApp || {};
 
     var href;
     if (document.querySelector('#work')) {
+      $('#work a').hover(function(e){
+        $(this).closest('.case-study-link').addClass('active-hover');
+      }, function(){
+        $(this).closest('.case-study-link').removeClass('active-hover');
+      });
       $('#work a').click(function(e){
         e.preventDefault();
         href = e.target.parentNode;

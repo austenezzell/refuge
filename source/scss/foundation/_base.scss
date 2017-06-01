@@ -118,6 +118,11 @@ img, video {
     animation: fade-up 1.5s ease forwards;
     animation-delay: 2s;
   }
+  .text-only-content {
+    opacity: 0;
+    animation: fade-up 1.5s ease forwards;
+    animation-delay: .4s;
+  }
 }
 .work-page {
   .transition {

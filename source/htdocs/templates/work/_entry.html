@@ -11,12 +11,20 @@
 
   <div class="main-content">
 
-    <section class="video-module wrap padding-x-xs-0 overflow-x-hidden primary-video">
-      <div class="row">
-        <div class="col-xs-12 portfolio-video-container">
-            <video autoplay class="portfolio-item portfolio-video " data-src="" src="{{ entry.video }}" poster=""></video>
+    <section class="video-module wrap padding-x-xs-0 overflow-x-hidden primary-video ">
+      {% if entry.fullBleedVideo %}
+        <div class="row vh-full full-bleed-container">
+          <div class="col-xs-12 offset-xs-0 portfolio-video-container align-middle-xs">
+              <video autoplay class="portfolio-item portfolio-video full-bleed-video" data-src="" src="{{ entry.video }}" poster=""></video>
+          </div>
         </div>
-      </div>
+      {% else %}
+        <div class="row vh-full">
+          <div class="col-xs-10 offset-xs-1 portfolio-video-container align-middle-xs">
+              <video autoplay class="portfolio-item portfolio-video " data-src="" src="{{ entry.video }}" poster=""></video>
+          </div>
+        </div>
+      {% endif %}
     </section>
 
     <section id="case-study" class="work-module wrap lazy-load">
@@ -89,7 +97,7 @@
       <section class="work-module lazy-load">
         <div class="wrap">
           <div class="row">
-            <div class="text-content col col-xs-10 offset-xs-1 ">
+            <div class="text-only-content col col-xs-10 offset-xs-1 ">
               <h5 class="h4">{{ block.moduleHeader }}</h5>
               <div class="two-col">
                 {{ block.moduleBody }}
@@ -123,7 +131,7 @@
 
     {% if entry.credits %}
       <section class="work-module wrap padding-x-xs-0 overflow-x-hidden lazy-load">
-        <div class="row text-content">
+        <div class="row text-only-content">
           <div class=" col-xs-10 offset-xs-1 padding-bottom-xs-2x">
             <h5 class="h4 underscore">credits</h5>
           </div>

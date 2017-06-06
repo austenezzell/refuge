@@ -22,8 +22,25 @@
   }
 }
 
+.next-project-module {
+  padding-bottom: $base-spacing * 4;
+  padding-top: $base-spacing * 2;
+  a {
+    &:hover {
+      text-decoration: none;
+      .underscore:before {
+        animation: underscore .7s 2 ease-out forwards;
+      }
+    }
+  }
+  .h1 {
+    line-height: .9;
+  }
+}
+
 .full-bleed-container {
   overflow: hidden;
+  background: #000;
   .full-bleed-video {
     position: absolute;
     top: 50%;
@@ -43,6 +60,7 @@ ul.credits {
     position: relative;
     list-style: none;
     padding: 0;
+    margin-bottom: 10px;
     span.name {
       padding-left: 10px;
     }
@@ -98,10 +116,64 @@ ul.credits {
       text-align: center;
       padding: 14px;
       @include breakpoint(sm){
-          height: 94px;
-          width: 240px;
-          margin-left: -120px;
-          margin-top: -47px;
+        height: 94px;
+        width: 240px;
+        margin-left: -120px;
+        margin-top: -47px;
+      }
+    }
+  }
+}
+
+button {
+  border: none;
+  background: none;
+  @extend .p;
+  border: none;
+  outline: none;
+  &:focus {
+    border: none;
+    outline: none;
+  }
+  &.cpy-clip {
+    position: relative;
+    .share-icon svg {
+      height: 40px;
+      width: auto;
+      position: relative;
+      top: 7px;
+      padding-right: 15px;
+    }
+    .text {
+      position: relative;
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0px;
+        z-index: -1;
+        height: 2px;
+        background: #000;
+        width: 0;
+        transition: width .4s;
+      }
+      .shared {
+        display: none;
+      }
+    }
+    &:hover {
+      .text:before {
+        width: 100%;
+      }
+    }
+    &.copied {
+      .text {
+        .shared {
+          display: inline;
+        }
+        .share {
+          display: none;
+        }
       }
     }
   }

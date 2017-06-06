@@ -38,6 +38,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "clipboard": "^1.7.1",
     "waypoints": "^4.0.1"
   }
 }

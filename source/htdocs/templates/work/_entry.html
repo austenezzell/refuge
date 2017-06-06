@@ -2,7 +2,7 @@
 <div class="work-page">
   <div class="transition"></div>
   <head>
-    <a href="/" class="h4 site-title">hanour.</a>
+    <a href="/" class="h2 site-title">hanour.</a>
     <a href="#" class="hamburger">
       <div class="line line-1"></div>
       <div class="line line-2"></div>
@@ -35,6 +35,17 @@
         </div>
         <div class="col-xs-10 offset-xs-1 col-md-7 offset-md-1">
           {{ entry.body }}
+
+
+          <button class="cpy-clip" data-clipboard-text="{{ craft.request.url }}">
+            <span class="share-icon"><svg width="62" height="85" viewBox="0 0 62 85" xmlns="http://www.w3.org/2000/svg"><title>share</title><path d="M39.125 28.5v3h19.04v50.334H3.835V31.5h19.04v-3H.835v56.334h60.33V28.5h-22.04zM29.5 6.287v52.13h3V6.287l10.84 10.84 2.12-2.12L31 .543l-14.46 14.46 2.12 2.122L29.5 6.285z"/></svg></span>
+            <span class="text">
+              <span class="share">share </span>link <span class="shared">copied</span>
+            </span>
+          </button>
+
+
+          <!-- <a class="h4 share-btn" href="#"><span class="share">share </span>link <span class="shared">shared</span></a> -->
         </div>
       </div>
     </section>
@@ -148,6 +159,31 @@
         </div>
       </section>
     {% endif %}
+
+    {# Set parameters for prev/next elements list #}
+    {% set params = craft.entries.section('work').order('postDate asc') %}
+
+    {# Get the prev/next elements #}
+    {% set prevEntry = entry.getPrev(params) %}
+
+
+    {# And make sure to only output the links if the element exists #}
+    {% if prevEntry %}
+
+      <section class="next-project-module wrap padding-x-xs-0 overflow-x-hidden lazy-load">
+        <div class="row text-only-content next-project-link">
+          <div class=" col-xs-10 offset-xs-1 padding-bottom-xs-2x">
+            <a href="{{ prevEntry.url }}">
+              <h5 class="h4 underscore">next</h5>
+              <p class="h1">{{ prevEntry.title }}</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    {% endif %}
+
+
 
 
   {% endblock %}

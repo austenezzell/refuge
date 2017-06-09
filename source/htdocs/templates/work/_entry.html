@@ -132,6 +132,27 @@
         </div>
       </section>
       {% endif %}
+
+      {% if block.type == "centeredImage" %}
+      <section class="work-module wrap padding-x-xs-0 overflow-x-hidden lazy-load">
+        <div class="row">
+          <div class="col-xs-10 offset-xs-1 wipe">
+            {% set image = block.moduleImage.first() %}
+            {% if image %}
+              <img class="portfolio-item" src="{{ image.getUrl }}" alt="">
+            {% else %}
+              {% set poster = block.moduleVideoPoster.first('sxiteenNine') %}
+              {% if poster %}
+                <video loop muted class="portfolio-item portfolio-video" data-src="{{ block.moduleVideo }}" src="#" poster="{{ poster.getUrl }}"></video>
+              {% else %}
+                <video loop muted class="portfolio-item portfolio-video" data-src="{{ block.moduleVideo }}" src="#" poster="/img/gradient.png"></video>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      </section>
+      {% endif %}
+
     {% endfor %}
 
     {% if entry.credits %}

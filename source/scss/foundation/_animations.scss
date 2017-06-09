@@ -29,6 +29,15 @@
   }
 }
 
+@keyframes nav-full-width {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 30px;
+  }
+}
+
 .a-fadeIn {
   animation: fade-in 500ms ease forwards;
 }
@@ -170,3 +179,12 @@
 //     animation: up-and-in-b 1.5s ease forwards;
 //   }
 // }
+
+@keyframes to-white {
+  0% {
+    background: rgba(white,0);
+  }
+  100% {
+    background: rgba(white,1);
+  }
+}

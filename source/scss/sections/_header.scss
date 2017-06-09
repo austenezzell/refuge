@@ -24,62 +24,67 @@
 }
 a.hamburger {
   position: fixed;
-  top: 72px;
+  // background: rgba(white,1);
+  top: 52px;
   right: 8.33333%;
-  width: 32px;
-  height: 10px;
+  width: 50px;
+  height: 50px;
   z-index: 999;
+  padding: 10px;
   margin-right: 2px;
   .line {
     height: 2px;
-    width: 100%;
+    width: 30px;
     background: black;
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 10px;
+    top: 20px;
     transition: all, .2s;
   }
   .line-2 {
-    top: 8px;
+    top: 30px;
   }
 }
 
 .work-page {
   a.hamburger {
+    // background: rgba(white,0);
     .line {
       width: 0;
     }
   }
   a.hamburger.on {
+    // animation: to-white .4s ease forwards;
     .line {
-      width: 100%;
+      width: 30px;
     }
   }
 }
 
 .home-page {
   a.hamburger {
+    // background: rgba(white,0);
+    // animation: to-white .4s ease forwards;
+    // animation-delay: 3s;
     .line {
       width: 0;
-      animation: width-full .4s ease forwards;
+      animation: nav-full-width .4s ease forwards;
       animation-delay: 3s;
-
-
-
-
     }
   }
 }
 
 .activeNav {
   a.hamburger {
+    animation: to-white .4s ease forwards;
+    animation-delay: 3s;
     .line-1 {
       transform: rotate(45deg);
-      top: 4px;
+      top: 25px;
     }
     .line-2 {
       transform: rotate(-45deg);
-      top: 4px;
+      top: 25px;
     }
   }
 }

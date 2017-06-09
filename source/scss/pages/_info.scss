@@ -38,8 +38,22 @@
       margin-bottom: $base-spacing * 1;
       a {
         display: block;
-        border-bottom: 1px solid white;
+        // border-bottom: 1px solid white;
         padding-bottom: $base-spacing;
+        span.title {
+          position: relative;
+          &:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            z-index: -1;
+            height: 2px;
+            background: #000;
+            transition: width .4s;
+          }
+        }
         span.date {
           display: block;
           margin-bottom: $base-spacing / 2;
@@ -47,7 +61,11 @@
         }
         &:hover {
           text-decoration: none;
-          border-color: $color-gray;
+          span.title {
+            &:before {
+              width: 100%;
+            }
+          }
           span.date {
             color: black;
           }

@@ -42,21 +42,22 @@ var aeApp = aeApp || {};
       var bodyHeight     = document.body.offsetHeight + 534;
       var distanceToBottom = Math.max(bodyHeight - (scrollPosition + windowSize), 0);
       var speed = (distanceToBottom / 100).toFixed(2);
-      var opacity = 1 - scrollPosition * .01;
+      var opacity = 1 - (scrollPosition * 0.003);
+      var opacityNumber = Math.max(opacity.toFixed(2), 0);
       if(speed < 1) {
         $('.section-bg').css('opacity', speed)
       } else {
         $('.section-bg').css('opacity', 1);
       }
 
-      var newPositioin = scrollPosition / 2;
-      if (scrollPosition <= 100) {
+      var newPositioin = - scrollPosition / 2;
+      if (scrollPosition <= 665) {
         $('.site-intro').css({
-          'opacity': opacity,
+          'opacity': opacityNumber,
           'visibility': 'visible',
           'transform': 'translateY('+ newPositioin +'px)'
         });
-      } else if (scrollPosition > 100) {
+      } else if (scrollPosition > 665) {
         $('.site-intro').css({
           'opacity': 0,
           'visibility': 'hidden'

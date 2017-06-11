@@ -16,6 +16,15 @@
   }
   .primary-video {
     z-index: 9;
+    position: relative;
+    .to-white {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: black;
+      top: 0;
+      left: 0;
+    }
   }
   .site-title {
     display: none;
@@ -44,15 +53,26 @@
 .full-bleed-container {
   overflow: hidden;
   background: #000;
+  height: 100vh;
   .full-bleed-video {
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // min-width: 100%;
+    // min-height: 100%;
+    // width: auto;
+    // height: auto;
+    // transform: translateX(-50%) translateY(-50%);
+
+
     position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translateX(-50%) translateY(-50%);
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+    object-position: 50%;
+    background-size: cover;
+    background-position: 50%;
   }
 }
 
@@ -79,7 +99,11 @@ ul.credits {
     column-count: 2;
   }
 }
-
+.full-bleed-container {
+  .portfolio-video-container {
+    height: 100vh;
+  }  
+}
 .portfolio-video-container {
   cursor: pointer;
   position: relative;

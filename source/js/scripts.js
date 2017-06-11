@@ -14,7 +14,6 @@ var aeApp = aeApp || {};
             $('body').removeClass('navOut');
             $('body').removeClass('activeNav');
           }, 400);
-
         } else {
           $('body').addClass('activeNav');
         }
@@ -57,11 +56,17 @@ var aeApp = aeApp || {};
           'visibility': 'visible',
           'transform': 'translateY('+ newPositioin +'px)'
         });
+        $('.to-white').css({
+          'opacity': opacityNumber
+        })
       } else if (scrollPosition > 665) {
         $('.site-intro').css({
           'opacity': 0,
           'visibility': 'hidden'
         });
+        $('.to-white').css({
+          'opacity': 0
+        })
       }
     }
   };
@@ -258,8 +263,21 @@ var aeApp = aeApp || {};
         offset: '50%'
       })
     }
-
     var href;
+    var pageTransition = function(e, selector, transitionName){
+      e.preventDefault();
+      href = e.target.parentNode;
+      selector.addClass(transitionName);
+      setTimeout(function(){
+        window.location.href = href;
+      }, 300);
+    }
+
+    $('.site-intro a').click(function(e){
+      pageTransition(e, $('body'), 'home-transitioning');
+    });
+
+
     if (document.querySelector('#work')) {
       $('#work a').hover(function(e){
         $(this).closest('.case-study-link').addClass('active-hover');
@@ -267,14 +285,19 @@ var aeApp = aeApp || {};
         $(this).closest('.case-study-link').removeClass('active-hover');
       });
       $('#work a').click(function(e){
-        e.preventDefault();
-        href = e.target.parentNode;
-        $('body').addClass('home-transitioning');
-        setTimeout(function(){
-          window.location.href = href;
-        }, 300);
+        pageTransition(e, $('body'), 'home-transitioning');
       })
     }
+
+    $('.next-project-module').click(function(e){
+      pageTransition(e, $('transition'), 'nextProject');
+      e.preventDefault();
+      href = e.target.parentNode;
+      $('.transition').addClass('nextProject');
+      setTimeout(function(){
+        window.location.href = href;
+      }, 300);
+    });
 
     var clipboard = new Clipboard('.cpy-clip');
 

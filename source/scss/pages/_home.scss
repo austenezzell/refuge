@@ -115,6 +115,21 @@
   }
 }
 
+.fixed-underscore {
+  position: relative;
+  overflow: hidden;
+  padding-left: 48px;
+  &:before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background: black;
+    left: 0;
+    top: 50%;
+  }
+}
+
 .text-img-module {
   padding: 90px 0 100px;
   @include breakpoint(md){

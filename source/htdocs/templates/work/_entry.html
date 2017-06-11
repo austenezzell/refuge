@@ -8,31 +8,29 @@
       <div class="line line-2"></div>
     </a>
   </head>
-
   <div class="main-content">
-
     <section class="video-module wrap padding-x-xs-0 overflow-x-hidden primary-video ">
       {% if entry.fullBleedVideo %}
-        <div class="row vh-full full-bleed-container">
+        <div class="row vh-full full-bleed-container full-bleed">
           <div class="col-xs-12 offset-xs-0 portfolio-video-container align-middle-xs">
             <video autoplay class="portfolio-item portfolio-video full-bleed-video" data-src="" src="{{ entry.video }}" poster=""></video>
           </div>
         </div>
       {% else %}
         <div class="row vh-full">
-          <div class="col-xs-10 offset-xs-1 portfolio-video-container align-middle-xs">
+          <div class="to-white"></div>
+          <div class="col-xs-12 offset-xs-0 portfolio-video-container align-middle-xs">
             <video autoplay class="portfolio-item portfolio-video " data-src="" src="{{ entry.video }}" poster=""></video>
           </div>
         </div>
       {% endif %}
     </section>
-
     <section id="case-study" class="work-module wrap lazy-load">
       <div class="row text-content">
         <div class=" col-xs-10 offset-xs-1 col-md-3 offset-md-1">
           <h2>{{ entry.title }}</h2>
-          <h5 class="h4 underscore">{{ entry.projectType }}</h5>
-          <button class="cpy-clip" data-clipboard-text="{{ craft.request.url }}">
+          <h5 class="h4 fixed-underscore">{{ entry.projectType }}</h5>
+          <button class="cpy-clip margin-top-xs-3x" data-clipboard-text="{{ craft.request.url }}">
             <span class="text">
               <span class="share">share </span>link <span class="shared">copied</span>
             </span>
@@ -43,15 +41,17 @@
         </div>
       </div>
     </section>
-
-
     {% for block in entry.caseStudyModules %}
       {% if block.type == "rightImage" %}
         <section class="work-module right-img wrap padding-x-xs-0 overflow-x-hidden lazy-load">
           <div class="row">
             <div class="text-content col-xs-10 offset-xs-1 col-md-3 offset-md-1 align-middle-xs padding-top-xs-2x padding-top-md-0">
+                {% if block.moduleHeader %}
                 <h5 class="h4">{{ block.moduleHeader }}</h5>
+                {% endif %}
+                {% if block.moduleBody %}
                 <div>{{ block.moduleBody }}</div>
+                {% endif %}
             </div>
             <div class="order-first-xs order-last-md col-xs-10 offset-xs-1 col-md-7 offset-md-1 align-middle-xs">
               <div class="wipe">
@@ -71,13 +71,16 @@
           </div>
         </section>
       {% endif %}
-
       {% if block.type == "leftImage" %}
         <section class="work-module right-img wrap padding-x-xs-0 overflow-x-hidden lazy-load">
           <div class="row">
             <div class="text-content col-xs-10 offset-xs-1 col-md-3 offset-md-1 align-middle-xs padding-top-xs-2x padding-top-md-0">
+                {% if block.moduleHeader %}
                 <h5 class="h4">{{ block.moduleHeader }}</h5>
+                {% endif %}
+                {% if block.moduleBody %}
                 <div>{{ block.moduleBody }}</div>
+                {% endif %}
             </div>
             <div class="order-first-xs col-xs-10 offset-xs-1 offset-md-0 col-md-7 offset-md-1 align-middle-xs">
               <div class="wipe">
@@ -97,22 +100,24 @@
           </div>
         </section>
       {% endif %}
-
       {% if block.type == "textModule" %}
       <section class="work-module lazy-load">
         <div class="wrap">
           <div class="row">
             <div class="text-only-content col col-xs-10 offset-xs-1 ">
-              <h5 class="h4">{{ block.moduleHeader }}</h5>
+              {% if block.moduleHeader %}
+                <h4>{{ block.moduleHeader }}</h4>
+              {% endif %}
+              {% if block.moduleBody %}
               <div class="two-col">
                 {{ block.moduleBody }}
               </div>
+              {% endif %}
             </div>
           </div>
         </div>
       </section>
       {% endif %}
-
       {% if block.type == "fullWidthImage" %}
       <section class="work-module wrap padding-x-xs-0 overflow-x-hidden lazy-load">
         <div class="row">
@@ -132,7 +137,6 @@
         </div>
       </section>
       {% endif %}
-
       {% if block.type == "centeredImage" %}
       <section class="work-module wrap padding-x-xs-0 overflow-x-hidden lazy-load">
         <div class="row">
@@ -152,9 +156,21 @@
         </div>
       </section>
       {% endif %}
-
+      {% if block.type == "centeredText" %}
+      <section class="work-module wrap padding-x-xs-0 overflow-x-hidden lazy-load">
+        <div class="row">
+          <div class="col-xs-6 offset-xs-3 col-md-4 offset-md-4 text-only-content">
+            {% if block.moduleHeader %}
+              <h4>{{ block.moduleHeader }}</h4>
+            {% endif %}
+            {% if block.moduleCenteredText %}
+              {{ block.moduleCenteredText }}
+            {% endif %}
+          </div>
+        </div>
+      </section>
+      {% endif %}
     {% endfor %}
-
     {% if entry.credits %}
       <section class="work-module wrap padding-x-xs-0 overflow-x-hidden lazy-load">
         <div class="row text-only-content">
@@ -178,17 +194,9 @@
         </div>
       </section>
     {% endif %}
-
-    {# Set parameters for prev/next elements list #}
     {% set params = craft.entries.section('work').order('postDate asc') %}
-
-    {# Get the prev/next elements #}
     {% set prevEntry = entry.getPrev(params) %}
-
-
-    {# And make sure to only output the links if the element exists #}
     {% if prevEntry %}
-
       <section class="next-project-module wrap padding-x-xs-0 overflow-x-hidden lazy-load">
         <div class="row text-only-content next-project-link">
           <div class=" col-xs-10 offset-xs-1 padding-bottom-xs-2x">
@@ -199,10 +207,5 @@
           </div>
         </div>
       </section>
-
     {% endif %}
-
-
-
-
   {% endblock %}

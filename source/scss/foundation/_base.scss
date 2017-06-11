@@ -96,6 +96,7 @@ img, video {
 .animate-in {
   opacity: 1;
   .client {
+    pointer-events: none;
     h3 {
       animation: translate-up-100 .5s ease forwards;
       animation-delay: 1s;
@@ -141,7 +142,7 @@ img, video {
     animation-delay: .4s;
   }
 }
-.work-page {
+.work-page, .info-page {
   .transition {
     top: 0;
     left: 0;
@@ -154,8 +155,14 @@ img, video {
     pointer-events: none;
     animation-delay: .5s;
   }
+  .transition.nextProject {
+    width: 0%;
+    animation: width-full .4s ease forwards;
+    opacity: 1;
+    background: $gray-gradient;
+  }
 }
-.home-page, .info-page {
+.home-page {
   .transition {
     background: $gray-gradient;
     position: fixed;

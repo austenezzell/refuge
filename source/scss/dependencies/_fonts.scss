@@ -14,14 +14,15 @@
   font-family: 'NeutraText-Book';
   src: url('/fonts/neutra/NeutraText-Book.eot'); /* IE9 Compat Modes */
   src: url('/fonts/neutra/NeutraText-Book.woff') format('woff'), /* Pretty Modern Browsers */
-       url('/fonts/neutra/NeutraText-Book.ttf')  format('truetype') /* Safari, Android, iOS */
+       url('/fonts/neutra/NeutraText-Book.ttf')  format('truetype'); /* Safari, Android, iOS */
+
 }
 
 @font-face {
   font-family: 'NeutraText-Bold';
   src: url('/fonts/neutra/NeutraText-Bold.eot'); /* IE9 Compat Modes */
   src: url('/fonts/neutra/NeutraText-Bold.woff') format('woff'), /* Pretty Modern Browsers */
-       url('/fonts/neutra/NeutraText-Bold.ttf')  format('truetype') /* Safari, Android, iOS */
+       url('/fonts/neutra/NeutraText-Bold.ttf')  format('truetype'); /* Safari, Android, iOS */
 }
 
 

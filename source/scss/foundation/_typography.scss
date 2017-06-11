@@ -8,6 +8,7 @@
 h1, .h1, .font-xl {
   @include font-size(lg);
   font-weight: 700;
+  font-family: 'NeutraText-Bold';
   @include breakpoint(sm){
     @include font-size(xl);
   }
@@ -16,6 +17,7 @@ h1, .h1, .font-xl {
 h2, .h2, .font-lg {
   @include font-size(md);
   font-weight: 700;
+  font-family: 'NeutraText-Bold';
   @include breakpoint(sm){
     @include font-size(lg);
   }
@@ -24,11 +26,13 @@ h2, .h2, .font-lg {
 h3, .h3, .font-md {
   @include font-size(md);
   font-weight: 700;
+  font-family: 'NeutraText-Bold';
 }
 
 h4, .h4, .font-sm {
   @include font-size(sm);
   font-weight: 700;
+  font-family: 'NeutraText-Bold';
 }
 
 h5, .h5, .font-xs {
@@ -44,9 +48,10 @@ p, .p {
 
 .intro-text {
   @include font-size(md);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .light-weight {
-  font-weight: 300;
+  font-family: 'NeutraText-Book';
+  font-weight: 400!important;
 }

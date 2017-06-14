@@ -128,14 +128,11 @@ class UpdatesService extends BaseApplicationComponent
 			return true;
 		}
 
-		if (!empty($this->_updateModel->plugins))
+		foreach ($this->_updateModel->plugins as $pluginUpdateModel)
 		{
-			foreach ($this->_updateModel->plugins as $pluginUpdateModel)
+			if ($pluginUpdateModel->criticalUpdateAvailable)
 			{
-				if ($pluginUpdateModel->criticalUpdateAvailable)
-				{
-					return true;
-				}
+				return true;
 			}
 		}
 
@@ -419,17 +416,8 @@ class UpdatesService extends BaseApplicationComponent
 
 					foreach ($release['notes'] as $line)
 					{
-						if (version_compare(PHP_VERSION, '5.4', '>='))
-						{
-							$flags = ENT_QUOTES | ENT_SUBSTITUTE;
-						}
-						else
-						{
-							$flags = ENT_QUOTES;
-						}
-
 						// Escape any HTML
-						$line = htmlspecialchars($line, $flags, 'UTF-8');
+						$line = htmlspecialchars($line, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 
 						// Is this a heading?
 						if (preg_match('/^#\s+(.+)/', $line, $match))

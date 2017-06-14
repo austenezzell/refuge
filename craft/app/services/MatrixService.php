@@ -46,7 +46,7 @@ class MatrixService extends BaseApplicationComponent
 	/**
 	 * @var
 	 */
-	private $_uniqueBlockTypeAndFieldHandles = array();
+	private $_uniqueBlockTypeAndFieldHandles;
 
 	/**
 	 * @var

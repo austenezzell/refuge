@@ -48,7 +48,7 @@ class LocaleModel extends BaseApplicationComponent
 	 */
 	public function __toString()
 	{
-		return (string)$this->_id;
+		return $this->_id;
 	}
 
 	public function getId()

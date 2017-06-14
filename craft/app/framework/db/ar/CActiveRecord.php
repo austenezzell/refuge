@@ -151,7 +151,6 @@ abstract class CActiveRecord extends CModel
 	 * This method is overridden so that AR attributes can be accessed like properties.
 	 * @param string $name property name
 	 * @param mixed $value property value
-	 * @throws CException
 	 */
 	public function __set($name,$value)
 	{
@@ -190,7 +189,6 @@ abstract class CActiveRecord extends CModel
 	 * This method overrides the parent implementation by clearing
 	 * the specified attribute value.
 	 * @param string $name the property name or the event name
-	 * @throws CException
 	 */
 	public function __unset($name)
 	{
@@ -815,10 +813,9 @@ abstract class CActiveRecord extends CModel
 	}
 
 	/**
-	 * Returns if the current record is new (was never saved to database)
+	 * Returns if the current record is new.
 	 * @return boolean whether the record is new and should be inserted when calling {@link save}.
-	 * This property is automatically set in constructor and {@link populateRecord} and is set
-	 * to false right after inserting record to database.
+	 * This property is automatically set in constructor and {@link populateRecord}.
 	 * Defaults to false, but it will be set to true if the instance is created using
 	 * the new operator.
 	 */

@@ -478,7 +478,7 @@ class DashboardController extends BaseController
 			$errors = $getHelpModel->getErrors();
 		}
 
-		$this->renderTemplate('_components/widgets/CraftSupport/response',
+		$this->renderTemplate('_components/widgets/GetHelp/response',
 			array(
 				'success' => $success,
 				'errors' => JsonHelper::encode($errors),

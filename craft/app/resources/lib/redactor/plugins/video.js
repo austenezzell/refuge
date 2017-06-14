@@ -28,7 +28,6 @@
 			init: function()
 			{
 				var button = this.button.addAfter('image', 'video', this.lang.get('video'));
-				this.button.setIcon(button, '<i class="re-icon-video"></i>');
 				this.button.addCallback(button, this.video.show);
 			},
 			show: function()

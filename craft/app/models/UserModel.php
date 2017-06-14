@@ -40,11 +40,11 @@ class UserModel extends BaseElementModel
 	{
 		if (craft()->config->get('useEmailAsUsername'))
 		{
-			return (string)$this->email;
+			return $this->email;
 		}
 		else
 		{
-			return (string)$this->username;
+			return $this->username;
 		}
 	}
 

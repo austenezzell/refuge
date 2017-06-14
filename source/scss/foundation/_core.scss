@@ -9,11 +9,8 @@ p {}
 ul, ol {}
 
 a {
-  color: black;
+  color: $color-primary;
   text-decoration: none;
-  &:hover {
-    text-decoration: underline;
-  }
 }
 
 a:hover {

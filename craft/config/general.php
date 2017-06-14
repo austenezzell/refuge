@@ -22,28 +22,16 @@ return array(
     /* Environment Variables */
     'environmentVariables' => array(
       'baseAssetUrl'  => 'http://localhost:8888',
-      'baseAssetPath' => '/users/aezzell/Documents/websites/hanour/build',
+      'baseAssetPath' => '/users/austenezzell/Desktop/refuge/build',
+    )
+  ),
+  'cincodesign.cinco.io' => array(
+    'siteUrl' => 'http://cincodesign.cinco.io/',
+
+    /* Environment Variables */
+    'environmentVariables' => array(
+      'baseAssetUrl'  => '//cincodesign.cinco.io',
+      'baseAssetPath' => '/srv/www/cincodesign.cinco.io/build',
     )
   )
 );
-
-
-
-// return array(
-//
-//   '*' => array(
-//     'omitScriptNameInUrls' => true,
-//     'defaultImageQuality' => 90,
-//     'maxUploadFileSize' => 33554432,
-//   ),
-//     '138.68.12.58' => array(
-//     'devMode' => true,
-//     'siteUrl' => 'http://138.68.12.58/',
-//
-//     /* Environment Variables */
-//     'environmentVariables' => array(
-//       'baseAssetUrl'  => '//138.68.12.58',
-//       'baseAssetPath' => '/var/www/html',
-//     )
-//   )
-// );

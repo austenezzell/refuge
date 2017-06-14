@@ -118,8 +118,7 @@
 							sources: ['group:'~group.id],
 							criteria: parentOptionCriteria,
 							limit: 1,
-							elements: (parent is defined and parent ? [parent]),
-                            errors: category.getErrors('parent')
+							elements: (parent is defined and parent ? [parent])
 						}) }}
 					{% endif %}
 

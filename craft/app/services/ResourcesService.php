@@ -90,13 +90,6 @@ class ResourcesService extends BaseApplicationComponent
 					}
 
 					$path = implode('/', $segs);
-
-					// Make sure we're contained.
-					if (PathHelper::ensurePathIsContained($path) === false)
-					{
-						throw new HttpException(404);
-					}
-
 					break;
 				}
 

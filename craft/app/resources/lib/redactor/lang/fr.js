@@ -44,14 +44,7 @@
     "horizontalrule": "Ligne",
     "upload-label": "Déposez un fichier ici ou ",
     "accessibility-help-label": "Editeur de texte enrichi",
-    "caption": "Caption",
-    "bulletslist": "Bullets",
-    "numberslist": "Numbers",
-    "image-position": "Position",
-    "none": "None",
-    "left": "Left",
-    "right": "Right",
-    "center": "Center"
+    "caption": "Caption"
 };
 
 })(jQuery);

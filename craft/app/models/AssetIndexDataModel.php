@@ -23,7 +23,7 @@ class AssetIndexDataModel extends BaseComponentModel
 	 */
 	public function __toString()
 	{
-		return (string)$this->uri;
+		return $this->uri;
 	}
 
 	// Protected Methods

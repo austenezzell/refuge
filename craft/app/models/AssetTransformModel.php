@@ -23,7 +23,7 @@ class AssetTransformModel extends BaseModel
 	 */
 	public function __toString()
 	{
-		return (string)$this->name;
+		return $this->name;
 	}
 
 	/**

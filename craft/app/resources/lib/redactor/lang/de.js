@@ -44,14 +44,7 @@
     "horizontalrule": "Linie",
     "upload-label": "Datei hier ablegen oder ",
     "accessibility-help-label": "Rich-Text-Editor",
-    "caption": "Caption",
-    "bulletslist": "Bullets",
-    "numberslist": "Numbers",
-    "image-position": "Position",
-    "none": "None",
-    "left": "Left",
-    "right": "Right",
-    "center": "Center"
+    "caption": "Caption"
 };
 
 })(jQuery);

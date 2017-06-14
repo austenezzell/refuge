@@ -1,195 +1,112 @@
 /*
   Place styles specific to the homepage in here.
 */
-.home-page {
-  .main-content {
-    background: black;
-  }
-  #work {
-    margin-top: 1px;
-  }
+
+video[poster]{
+  height:100%;
+  width:100%;
 }
 
-.text-line {
-  opacity: 0;
+.intro {
+  cursor: pointer;
+  overflow: hidden;
 }
-.text-line-1 {
-  animation: fade-in 1s ease forwards;
-  animation-delay: 1.2s;
+
+.backmask {
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
+  object-position: 50%;
+  background-size: cover;
+  background-position: 50%;
+  z-index: -1;
 }
-.text-line-2 {
-  animation: fade-in 1s ease forwards;
-  animation-delay: 1.4s;
-}
-.text-line-3 {
-  animation: fade-in 1s ease forwards;
-  animation-delay: 1.6s;
-}
-.site-intro{
-  // position: fixed;
-  // top:50%;
-  // margin-top: -60px;
-  padding-bottom: $base-spacing * 11;
-  position: relative;
-  p {
-    line-height: 1.3;
+
+.home-play-btn {
+  position: absolute;
+  width: 100%;
+  margin: 0;
+  left: auto;
+  @include breakpoint(xl){
+    width: $grid-max-width;
+    margin-left: 50%;
+    left: -$grid-max-width / 2;
   }
-  a span {
-    position: relative;
-    &:before {
-      content: '';
-      transition: width .4s;
-      width: 0%;
-      height: 2px;
-      background: black;
-      z-index: -1;
-      position: absolute;
-      bottom: 4px;
-      left: 0%;
+  .play-reel {
+    color: $color-primary;
+    bottom: $base-spacing * 3;
+    position: absolute;
+    width: 190px;
+    @include breakpoint(md){
+      width: 280px;
+      bottom: $base-spacing * 2;
     }
-    &:hover {
-      &:before {
-        width: 100%;
+    h2 {
+      display: inline-block;
+    }
+    img {
+      height: 30px;
+      width: 30px;
+      position: absolute;
+      right: 0;
+      display: inline-block;
+      @include breakpoint(md){
+        height: 50px;
+        width: 50px;
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: opacity, transform 0.2s ease-out;
       }
     }
   }
-  .up-and-in {
-    // transform: translateY(24px);
-  }
-  p > a {
-    text-decoration: none;
-    // &:hover {
-    //   text-decoration: underline;
-    // }
-  }
-}
-
-.move-right {
-  animation: from-right .7s forwards;
-}
-.move-left {
-  animation: from-left .7s forwards;
-}
-
-.case-study-link {
-  // h2 span {
-  //   position: relative;
-  // }
-  // h2 span:before {
-  //   content: '';
-  //   transition: width .4s;
-  //   width: 0%;
-  //   left: 0%;
-  //   height: 2px;
-  //   background: black;
-  //   z-index: -1;
-  //   position: absolute;
-  //   bottom: 2px;
-  // }
-}
-.case-study-link.active-hover {
-  // h2 span:before {
-  //   width: 100%;
-  // }
-  .underscore {
-    padding-left: 48px;
-  }
-  .underscore:before {
-    animation: underscore .7s ease forwards;
-  }
-}
-
-.underscore {
-  padding-left: 0px;
-  position: relative;
-  overflow: hidden;
-  transition: padding-left .7s ease;
-  &:before {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background: black;
-    left: 0;
-    top: 50%;
-  }
-}
-
-.fixed-underscore {
-  position: relative;
-  overflow: hidden;
-  padding-left: 48px;
-  &:before {
-    content: '';
-    position: absolute;
-    width: 30px;
-    height: 2px;
-    background: black;
-    left: 0;
-    top: 50%;
-  }
-}
-
-.text-img-module {
-  padding: 90px 0 100px;
-  @include breakpoint(md){
-    padding: 90px 0 240px;
-  }
-  h2 {
-    margin-bottom: $base-spacing;
-    line-height: 1;
-    @include breakpoint(md){
-      margin-bottom: $base-spacing * 1.5;
+  .play-reel.active {
+    img {
+      opacity: 1;
+      transform: translateX(0px);
     }
   }
-  a {
+}
+
+.video-intro {
+  display: none;
+  opacity: 1;
+  transition: opacity 0.2s ease-out;
+  @include breakpoint(md){
     display: block;
   }
-  a {
-    text-decoration: none;
-  }
-  a.mobile-cta {
-    background: black;
-    color: white;
-    padding: 6px 14px;
-    display: inline-block;
-    @include breakpoint(md){
-      display: none;
-    }
-  }
-  .client {
-    position: absolute;
-    top: -38px;
-    z-index: 9999;
-    overflow: hidden;
-    @include breakpoint(sm){
-      top: -88px;
-    }
-    h3 {
-      transform: translateY(150px);
+}
 
-    }
-  }
-  .text-content {
-    position: relative;
-    // opacity: 0;
+.mobile-intro {
+  display: block;
+  opacity: 1;
+  transition: opacity 0.2s ease-out;
+  @include breakpoint(md){
+    display: none;
   }
 }
 
-
-
-.left-img .client {
-  left: 13px;
-  @include breakpoint(md){
-    left: auto;
-    right: 48px;
+#hero-reel {
+  transform: translate(0px, 50px);
+  opacity: 0;
+  transition: transform, opacity, .6s ease-out;
+  visibility: hidden;
+  video {
+    width: 100%;
+    height: auto;
   }
 }
 
-.right-img .client {
-  left: 13px;
-  @include breakpoint(md){
-    left: 48px;
+.intro.active-reel {
+  cursor: auto;
+  .play-reel, .mobile-intro, .video-intro {
+    opacity: 0;
   }
-
+  #hero-reel {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0px, 0px);
+  }
 }

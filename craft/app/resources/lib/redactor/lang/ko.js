@@ -44,14 +44,7 @@
     "horizontalrule": "행",
     "upload-label": "파일을 여기 드롭 하거나 선택을 클릭",
     "accessibility-help-label": "Rich text 편집기",
-    "caption": "Caption",
-    "bulletslist": "Bullets",
-    "numberslist": "Numbers",
-    "image-position": "Position",
-    "none": "None",
-    "left": "Left",
-    "right": "Right",
-    "center": "Center"
+    "caption": "Caption"
 };
 
 })(jQuery);

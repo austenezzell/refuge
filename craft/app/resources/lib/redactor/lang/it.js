@@ -44,14 +44,7 @@
     "horizontalrule": "Linea",
     "upload-label": "Trascina file qui oppure ",
     "accessibility-help-label": "Editor di testo",
-    "caption": "Caption",
-    "bulletslist": "Bullets",
-    "numberslist": "Numbers",
-    "image-position": "Position",
-    "none": "None",
-    "left": "Left",
-    "right": "Right",
-    "center": "Center"
+    "caption": "Caption"
 };
 
 })(jQuery);

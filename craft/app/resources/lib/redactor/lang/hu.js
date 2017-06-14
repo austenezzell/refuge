@@ -44,14 +44,7 @@
     "horizontalrule": "Vonal",
     "upload-label": "Húzza ide a fájlt vagy ",
     "accessibility-help-label": "Szövegszerkesztő",
-    "caption": "Caption",
-    "bulletslist": "Bullets",
-    "numberslist": "Numbers",
-    "image-position": "Position",
-    "none": "None",
-    "left": "Left",
-    "right": "Right",
-    "center": "Center"
+    "caption": "Caption"
 };
 
 })(jQuery);

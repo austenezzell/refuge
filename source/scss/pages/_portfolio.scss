@@ -1,0 +1,14 @@
+/*
+  Place styles specific to the Portfolio Page in here.
+*/
+
+
+.portfolio {
+  margin-top: 100px;
+}
+
+.project-description {
+  p, h5 {
+    color: $color-gray;
+  }
+}

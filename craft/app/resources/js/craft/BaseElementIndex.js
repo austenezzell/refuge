@@ -1726,7 +1726,6 @@ Craft.BaseElementIndex = Garnish.Base.extend(
 {
 	defaults: {
 		context: 'index',
-		modal: null,
 		storageKey: null,
 		criteria: null,
 		batchSize: 50,

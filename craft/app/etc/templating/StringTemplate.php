@@ -50,6 +50,6 @@ class StringTemplate
 	 */
 	public function __toString()
 	{
-		return (string)$this->cacheKey;
+		return $this->cacheKey;
 	}
 }

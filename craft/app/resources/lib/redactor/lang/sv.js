@@ -44,14 +44,7 @@
     "horizontalrule": "Linje",
     "upload-label": "Släpp filen här eller ",
     "accessibility-help-label": "Textredigerare",
-    "caption": "Caption",
-    "bulletslist": "Bullets",
-    "numberslist": "Numbers",
-    "image-position": "Position",
-    "none": "None",
-    "left": "Left",
-    "right": "Right",
-    "center": "Center"
+    "caption": "Caption"
 };
 
 })(jQuery);

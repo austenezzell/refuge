@@ -1,17 +1,17 @@
 [
     {
         "name": "symfony/event-dispatcher",
-        "version": "v2.8.20",
-        "version_normalized": "2.8.20.0",
+        "version": "v2.8.14",
+        "version_normalized": "2.8.14.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/event-dispatcher.git",
-            "reference": "7fc8e2b4118ff316550596357325dfd92a51f531"
+            "reference": "25c576abd4e0f212e678fe8b2bd9a9a98c7ea934"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/7fc8e2b4118ff316550596357325dfd92a51f531",
-            "reference": "7fc8e2b4118ff316550596357325dfd92a51f531",
+            "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/25c576abd4e0f212e678fe8b2bd9a9a98c7ea934",
+            "reference": "25c576abd4e0f212e678fe8b2bd9a9a98c7ea934",
             "shasum": ""
         },
         "require": {
@@ -19,7 +19,7 @@
         },
         "require-dev": {
             "psr/log": "~1.0",
-            "symfony/config": "^2.0.5|~3.0.0",
+            "symfony/config": "~2.0,>=2.0.5|~3.0.0",
             "symfony/dependency-injection": "~2.6|~3.0.0",
             "symfony/expression-language": "~2.6|~3.0.0",
             "symfony/stopwatch": "~2.3|~3.0.0"
@@ -28,7 +28,7 @@
             "symfony/dependency-injection": "",
             "symfony/http-kernel": ""
         },
-        "time": "2017-04-26 16:56:54",
+        "time": "2016-10-13 01:43:15",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -167,17 +167,17 @@
     },
     {
         "name": "lsolesen/pel",
-        "version": "0.9.4.2",
-        "version_normalized": "0.9.4.2",
+        "version": "0.9.4.1",
+        "version_normalized": "0.9.4.1",
         "source": {
             "type": "git",
             "url": "https://github.com/pixelandtonic/pel.git",
-            "reference": "997acac523a62753da50450d2d2944ccef12b083"
+            "reference": "054b8220207c571df3a6882b895e19c1674fdbf2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/pixelandtonic/pel/zipball/997acac523a62753da50450d2d2944ccef12b083",
-            "reference": "997acac523a62753da50450d2d2944ccef12b083",
+            "url": "https://api.github.com/repos/pixelandtonic/pel/zipball/054b8220207c571df3a6882b895e19c1674fdbf2",
+            "reference": "054b8220207c571df3a6882b895e19c1674fdbf2",
             "shasum": ""
         },
         "require": {
@@ -187,7 +187,7 @@
             "lastcraft/simpletest": ">=1.1",
             "squizlabs/php_codesniffer": "2.*"
         },
-        "time": "2016-12-30 22:03:09",
+        "time": "2016-07-18 21:40:02",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -219,7 +219,7 @@
             "image"
         ],
         "support": {
-            "source": "https://github.com/pixelandtonic/pel/tree/0.9.4.2"
+            "source": "https://github.com/pixelandtonic/pel/tree/0.9.4.1"
         }
     },
     {
@@ -263,17 +263,17 @@
     },
     {
         "name": "phpmailer/phpmailer",
-        "version": "v5.2.21",
-        "version_normalized": "5.2.21.0",
+        "version": "5.2.15",
+        "version_normalized": "5.2.15.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/PHPMailer/PHPMailer.git",
-            "reference": "1d51856b76c06fc687fcd9180efa7a0bed0d761e"
+            "url": "https://github.com/pixelandtonic/PHPMailer.git",
+            "reference": "6806100d6fb909784d987df0667390b3b8c57414"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/1d51856b76c06fc687fcd9180efa7a0bed0d761e",
-            "reference": "1d51856b76c06fc687fcd9180efa7a0bed0d761e",
+            "url": "https://api.github.com/repos/pixelandtonic/PHPMailer/zipball/6806100d6fb909784d987df0667390b3b8c57414",
+            "reference": "6806100d6fb909784d987df0667390b3b8c57414",
             "shasum": ""
         },
         "require": {
@@ -284,9 +284,10 @@
             "phpunit/phpunit": "4.7.*"
         },
         "suggest": {
-            "league/oauth2-google": "Needed for Google XOAUTH2 authentication"
+            "league/oauth2-client": "Needed for XOAUTH2 authentication",
+            "league/oauth2-google": "Needed for Gmail XOAUTH2"
         },
-        "time": "2016-12-28 15:35:48",
+        "time": "2015-11-22 02:58:38",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -300,18 +301,17 @@
                 "extras/ntlm_sasl_client.php"
             ]
         },
-        "notification-url": "https://packagist.org/downloads/",
         "license": [
             "LGPL-2.1"
         ],
         "authors": [
             {
-                "name": "Jim Jagielski",
-                "email": "jimjag@gmail.com"
-            },
-            {
                 "name": "Marcus Bointon",
                 "email": "phpmailer@synchromedia.co.uk"
+            },
+            {
+                "name": "Jim Jagielski",
+                "email": "jimjag@gmail.com"
             },
             {
                 "name": "Andy Prevost",
@@ -321,7 +321,10 @@
                 "name": "Brent R. Matzelle"
             }
         ],
-        "description": "PHPMailer is a full-featured email creation and transfer class for PHP"
+        "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
+        "support": {
+            "source": "https://github.com/pixelandtonic/PHPMailer/tree/5.2.15"
+        }
     },
     {
         "name": "pixelandtonic/imagine",
@@ -442,17 +445,17 @@
     },
     {
         "name": "twig/twig",
-        "version": "1.33.2.1",
-        "version_normalized": "1.33.2.1",
+        "version": "1.24.1.1",
+        "version_normalized": "1.24.1.1",
         "source": {
             "type": "git",
             "url": "https://github.com/pixelandtonic/Twig.git",
-            "reference": "ab1e550378251d5f644c756064ef0e8e99502859"
+            "reference": "c49d824b19924e99db813a21f058959c4aa9b374"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/pixelandtonic/Twig/zipball/ab1e550378251d5f644c756064ef0e8e99502859",
-            "reference": "ab1e550378251d5f644c756064ef0e8e99502859",
+            "url": "https://api.github.com/repos/pixelandtonic/Twig/zipball/c49d824b19924e99db813a21f058959c4aa9b374",
+            "reference": "c49d824b19924e99db813a21f058959c4aa9b374",
             "shasum": ""
         },
         "require": {
@@ -462,7 +465,7 @@
             "symfony/debug": "~2.7",
             "symfony/phpunit-bridge": "~2.7"
         },
-        "time": "2017-04-20 23:54:49",
+        "time": "2016-07-14 23:35:41",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -503,7 +506,7 @@
         ],
         "support": {
             "forum": "https://groups.google.com/forum/#!forum/twig-users",
-            "source": "https://github.com/pixelandtonic/Twig/tree/1.33.2.1"
+            "source": "https://github.com/pixelandtonic/Twig/tree/1.24.1.1"
         }
     },
     {
@@ -513,18 +516,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/pixelandtonic/yii.git",
-            "reference": "481fed5d49c927cb246815335e92fdcf70c0e0a3"
+            "reference": "8d3256255fc7a1d453cb8d3537408604da738d89"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/pixelandtonic/yii/zipball/481fed5d49c927cb246815335e92fdcf70c0e0a3",
-            "reference": "481fed5d49c927cb246815335e92fdcf70c0e0a3",
+            "url": "https://api.github.com/repos/pixelandtonic/yii/zipball/8d3256255fc7a1d453cb8d3537408604da738d89",
+            "reference": "8d3256255fc7a1d453cb8d3537408604da738d89",
             "shasum": ""
         },
         "require": {
             "php": ">=5.1.0"
         },
-        "time": "2017-05-10 17:20:13",
+        "time": "2016-11-07 20:53:59",
         "bin": [
             "framework/yiic"
         ],

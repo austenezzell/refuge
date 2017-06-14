@@ -23,7 +23,7 @@ class TagGroupModel extends BaseModel
 	 */
 	public function __toString()
 	{
-		return (string)Craft::t($this->name);
+		return Craft::t($this->name);
 	}
 
 	/**

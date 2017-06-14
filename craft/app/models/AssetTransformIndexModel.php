@@ -23,7 +23,7 @@ class AssetTransformIndexModel extends BaseModel
 	 */
 	public function __toString()
 	{
-		return (string)$this->id;
+		return $this->id;
 	}
 
 	// Protected Methods

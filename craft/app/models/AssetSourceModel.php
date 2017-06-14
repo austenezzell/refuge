@@ -31,7 +31,7 @@ class AssetSourceModel extends BaseComponentModel
 	 */
 	public function __toString()
 	{
-		return (string)Craft::t($this->name);
+		return Craft::t($this->name);
 	}
 
 	/**

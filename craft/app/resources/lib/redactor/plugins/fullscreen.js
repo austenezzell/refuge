@@ -13,7 +13,6 @@
 				this.fullscreen.isOpen = false;
 
 				var button = this.button.add('fullscreen', this.lang.get('fullscreen'));
-				this.button.setIcon(button, '<i class="re-icon-expand"></i>');
 				this.button.addCallback(button, this.fullscreen.toggle);
 
 				if (this.opts.fullscreen)
@@ -25,7 +24,7 @@
 			enable: function()
 			{
 				this.fullscreen.isOpened = false;
-				this.button.changeIcon('fullscreen', 'retract');
+				this.button.setActive('fullscreen');
 				this.fullscreen.isOpen = true;
 
 				if (!this.opts.fullscreen)
@@ -88,7 +87,7 @@
 			},
 			disable: function()
 			{
-				this.button.changeIcon('fullscreen', 'expand');
+				this.button.setInactive('fullscreen');
 				this.fullscreen.isOpened = undefined;
 				this.fullscreen.isOpen = false;
 				this.selection.save();

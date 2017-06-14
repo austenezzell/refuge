@@ -101,11 +101,14 @@
 %}
 
 
-{% includejs 'Craft.cp.setTaskInfo('~craft.tasks.getTaskInfo()|json_encode|raw~', false);' %}
-{% if craft.tasks.isTaskRunning() %}
-	{% includejs 'Craft.cp.trackTaskProgress(true);' %}
+{% set task = craft.tasks.getRunningTask() %}
+{% if task %}
+	{% includejs 'Craft.cp.setRunningTaskInfo('~task.getInfo()|json_encode|raw~');' %}
+	{% includejs 'Craft.cp.trackTaskProgress();' %}
 {% elseif craft.tasks.areTasksPending() %}
 	{% includejs 'Craft.cp.runPendingTasks();' %}
+{% elseif craft.tasks.haveTasksFailed() %}
+	{% includejs 'Craft.cp.setRunningTaskInfo({ status: "error" });' %}
 {% endif %}
 
 
@@ -121,14 +124,6 @@
 		{% endspaceless -%}
 	{% endset %}
 {% endif %}
-
-{% set containerAttributes %}
-    {%- block containerAttributes -%}
-		id="container" {% if fullPageForm -%}
-			method="post" accept-charset="UTF-8" data-saveshortcut{% if saveShortcutRedirect is defined %} data-saveshortcut-redirect="{{ saveShortcutRedirect }}"{% endif %} data-confirm-unload
-		{%- endif %}
-    {%- endblock -%}
-{% endset %}
 
 
 {% block body %}
@@ -248,10 +243,10 @@
 	</header>
 
 	{% if fullPageForm %}
-		<form {{ containerAttributes }}>
+		<form id="container" method="post" accept-charset="UTF-8" data-saveshortcut{% if saveShortcutRedirect is defined %} data-saveshortcut-redirect="{{ saveShortcutRedirect }}"{% endif %} data-confirm-unload>
 			{{ getCsrfInput() }}
 	{% else %}
-		<div {{ containerAttributes }}>
+		<div id="container">
 	{% endif %}
 
 		<div id="notifications-wrapper">
@@ -386,9 +381,9 @@
 			</ul>
 		</div>
 
-	{% if fullPageForm %}
-		</form>
-	{% else %}
+	{% if not fullPageForm %}
 		</div>
+	{% else %}
+		</form>
 	{% endif %}
 {% endblock %}

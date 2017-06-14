@@ -166,8 +166,7 @@ abstract class BaseElementModel extends BaseModel
 	 */
 	public function __toString()
 	{
-		$title = (string) $this->getTitle();
-		return $title ?: ($this->id ?: get_class($this));
+		return (string) $this->getTitle();
 	}
 
 	/**

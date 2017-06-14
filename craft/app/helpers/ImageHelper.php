@@ -54,7 +54,7 @@ class ImageHelper
 	 *
 	 * @param $extension
 	 *
-	 * @return boolean
+	 * @return array
 	 */
 	public static function isImageManipulatable($extension)
 	{

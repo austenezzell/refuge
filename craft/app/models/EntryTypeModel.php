@@ -23,7 +23,7 @@ class EntryTypeModel extends BaseModel
 	 */
 	public function __toString()
 	{
-		return (string)$this->handle;
+		return $this->handle;
 	}
 
 	/**

@@ -643,23 +643,17 @@ class IOHelper
 	{
 		$path = static::normalizePathSeparators($path);
 
-		if (static::folderExists($path, false, $suppressErrors))
+		if (static::folderExists($path, false, $suppressErrors) && static::isReadable($path, $suppressErrors))
 		{
-			if (static::isReadable($path, $suppressErrors))
+			if (($contents = static::_folderContents($path, $recursive, $filter, $includeHiddenFiles, $suppressErrors)) !== false)
 			{
-				if (($contents = static::_folderContents($path, $recursive, $filter, $includeHiddenFiles, $suppressErrors)) !== false)
-				{
-					return $contents;
-				}
-
-				return false;
+				return $contents;
 			}
 
-			Craft::log('Tried to read the folder contents at '.$path.', but it is not readable.');
+			Craft::log('Tried to read the file contents at '.$path.' and could not.');
 			return false;
 		}
 
-		Craft::log('Tried to read the folder contents at '.$path.', but it does not exist.');
 		return false;
 	}
 

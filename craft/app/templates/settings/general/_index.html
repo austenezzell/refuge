@@ -68,6 +68,7 @@
 			"Are you sure you want to delete the logo?"
 		%}
 
+		{% includejsresource "lib/fileupload/jquery.ui.widget.js" %}
 		{% includejsresource "lib/fileupload/jquery.fileupload.js" %}
 		{% includejsresource "lib/jcrop/jquery.Jcrop.min.js" %}
 		{% includejsresource "js/rebrand.js" %}
@@ -75,13 +76,11 @@
 		{% includecssresource "css/rebrand.css" %}
 
 		{{ forms.field({
-			label: "Login Page Logo"|t,
-			instructions: "SVG file recommended. The logo will be displayed at {size} wide."|t({ size: '300px' })
+			label: "Login Page Logo"|t
 		}, include('settings/general/_images/logo')) }}
 
 		{{ forms.field({
-			label: "Site Icon"|t,
-			instructions: "Square SVG file recommended. The logo will be displayed at {size} by {size}."|t({ size: '32px' })
+			label: "Site Icon"|t
 		}, include('settings/general/_images/icon')) }}
 
 		<div class="clear"></div>

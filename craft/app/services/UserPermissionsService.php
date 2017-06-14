@@ -188,7 +188,7 @@ class UserPermissionsService extends BaseApplicationComponent
 	 */
 	public function getPermissionsByGroupId($groupId)
 	{
-		if (!isset($this->_permissionsByGroupId[$groupId]))
+		if (!isset($this->_permissionsByUserId[$groupId]))
 		{
 			$groupPermissions = craft()->db->createCommand()
 				->select('p.name')
@@ -251,10 +251,6 @@ class UserPermissionsService extends BaseApplicationComponent
 		craft()->db->createCommand()
 			->delete('userpermissions_usergroups', array('groupId' => $groupId));
 
-		// Lowercase the permissions
-		$permissions = array_map('strtolower', $permissions);
-
-		// Filter out any orphaned permissions
 		$permissions = $this->_filterOrphanedPermissions($permissions);
 
 		if ($permissions)
@@ -271,9 +267,6 @@ class UserPermissionsService extends BaseApplicationComponent
 			craft()->db->createCommand()
 				->insertAll('userpermissions_usergroups', array('permissionId', 'groupId'), $groupPermissionVals);
 		}
-
-		// Cache the new permissions
-		$this->_permissionsByGroupId[$groupId] = $permissions;
 
 		return true;
 	}
@@ -334,9 +327,6 @@ class UserPermissionsService extends BaseApplicationComponent
 		craft()->db->createCommand()
 			->delete('userpermissions_users', array('userId' => $userId));
 
-		// Lowercase the permissions
-		$permissions = array_map('strtolower', $permissions);
-
 		// Filter out any orphaned permissions
 		$groupPermissions = $this->getGroupPermissionsByUserId($userId);
 		$permissions = $this->_filterOrphanedPermissions($permissions, $groupPermissions);
@@ -355,9 +345,6 @@ class UserPermissionsService extends BaseApplicationComponent
 			craft()->db->createCommand()
 				->insertAll('userpermissions_users', array('permissionId', 'userId'), $userPermissionVals);
 		}
-
-		// Cache the new permissions
-		$this->_permissionsByUserId[$userId] = $permissions;
 
 		return true;
 	}
@@ -561,10 +548,8 @@ class UserPermissionsService extends BaseApplicationComponent
 
 		foreach ($permissionsGroup as $name => $data)
 		{
-		    $name = strtolower($name);
-
 			// Should the user have this permission (either directly or via their group)?
-			if (($inPostedPermissions = in_array($name, $postedPermissions)) || in_array($name, $groupPermissions))
+			if (($inPostedPermissions = in_array($name, $postedPermissions)) || in_array(strtolower($name), $groupPermissions))
 			{
 				// First assign any nested permissions
 				if (!empty($data['nested']))

@@ -89,9 +89,25 @@ Craft.RichTextInput = Garnish.Base.extend(
 			}
 		}
 
-        this.redactorConfig.callbacks = {
+		var callbacks = {
 			init: Craft.RichTextInput.handleRedactorInit
 		};
+
+		if (typeof this.redactorConfig.callbacks == typeof [])
+		{
+			// Merge them together
+			for (var i in callbacks)
+			{
+				if (typeof this.redactorConfig.callbacks[i] != typeof undefined)
+				{
+					this.redactorConfig.callbacks[i] = this.mergeCallbacks(callbacks[i], this.redactorConfig.callbacks[i]);
+				}
+			}
+		}
+		else
+		{
+			this.redactorConfig.callbacks = callbacks;
+		}
 
 		// Initialize Redactor
 		this.$textarea = $('#'+this.id);
@@ -260,7 +276,7 @@ Craft.RichTextInput = Garnish.Base.extend(
 								url += ':'+transform;
 							}
 
-							this.redactor.insert.node($('<figure><img src="'+url+'" /></figure>')[0]);
+							this.redactor.insert.node($('<img src="'+url+'" />')[0]);
 							this.redactor.code.sync();
 						}
 						this.redactor.observe.images();
@@ -377,22 +393,20 @@ Craft.RichTextInput = Garnish.Base.extend(
 		}
 
 		// Create a placeholder button
-		var $placeholder = this.redactor.button.addAfter(key, key+'_placeholder');
+		var placeholderKey = key+'_placeholder';
+		this.redactor.button.addAfter(key, placeholderKey);
 
 		// Remove the original
 		this.redactor.button.remove(key);
 
 		// Add the new one
-		// (Can't just use button.addAfter() here because it doesn't let us specify
-		// full button properties (e.g. icon); just title)
-        var $btn = this.redactor.button.build(key, {
-        	title: title,
-			icon: true
-        });
-        $placeholder.parent().after($('<li>').append($btn));
+		var $btn = this.redactor.button.addAfter(placeholderKey, key, title);
+
+		// Set the dropdown
+		//this.redactor.button.addDropdown($btn, dropdown);
 
 		// Remove the placeholder
-		$placeholder.remove();
+		this.redactor.button.remove(placeholderKey);
 
 		return $btn;
 	}

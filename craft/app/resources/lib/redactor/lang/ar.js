@@ -44,14 +44,7 @@
     "horizontalrule": "خط أفقي",
     "upload-label": "أسقط الملف هنا أو ",
     "accessibility-help-label": "محرر النص الغني",
-    "caption": "الشرح",
-    "bulletslist": "Bullets",
-    "numberslist": "Numbers",
-    "image-position": "Position",
-    "none": "None",
-    "left": "Left",
-    "right": "Right",
-    "center": "Center"
+    "caption": "الشرح"
 };
 
 })(jQuery);

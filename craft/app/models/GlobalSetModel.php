@@ -31,7 +31,7 @@ class GlobalSetModel extends BaseElementModel
 	 */
 	public function __toString()
 	{
-		return (string)$this->name;
+		return $this->name;
 	}
 
 	/**

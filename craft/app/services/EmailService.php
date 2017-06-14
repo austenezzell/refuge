@@ -247,6 +247,7 @@ class EmailService extends BaseApplicationComponent
 	 * @param EmailModel $emailModel
 	 * @param array      $variables
 	 *
+	 * @throws Exception
 	 * @return bool
 	 */
 	private function _sendEmail(UserModel $user, EmailModel $emailModel, $variables = array())
@@ -258,9 +259,7 @@ class EmailService extends BaseApplicationComponent
 
 		if (!isset($emailSettings['protocol']))
 		{
-		    Craft::log('Could not determine how to send the email. Check your email settings.', LogLevel::Warning);
-
-		    return false;
+			throw new Exception(Craft::t('Could not determine how to send the email.  Check your email settings.'));
 		}
 
 		// Fire an 'onBeforeSendEmail' event
@@ -312,7 +311,7 @@ class EmailService extends BaseApplicationComponent
 							StringHelper::isNullOrEmpty($emailSettings['host']) || StringHelper::isNullOrEmpty($emailSettings['port']) || StringHelper::isNullOrEmpty($emailSettings['username']) || StringHelper::isNullOrEmpty($emailSettings['password'])
 						)
 						{
-							throw new Exception('Host, port, username and password must be configured under your email settings.');
+							throw new Exception(Craft::t('Host, port, username and password must be configured under your email settings.'));
 						}
 
 						if (!isset($emailSettings['timeout']))
@@ -473,9 +472,7 @@ class EmailService extends BaseApplicationComponent
 					'error' => $errorMessage,
 				)));
 
-				Craft::log('Email error: '.$errorMessage, LogLevel::Error);
-
-				return false;
+				throw new Exception(Craft::t('Email error: {error}', array('error' => $errorMessage)));
 			}
 
 			Craft::log('Successfully sent email with subject: '.$email->Subject, LogLevel::Info);

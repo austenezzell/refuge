@@ -44,14 +44,7 @@
     "horizontalrule": "Çizgi",
     "upload-label": "Dosyayı buraya sürukle veya ",
     "accessibility-help-label": "Zenginleştirilmiş yazı editorü",
-    "caption": "Caption",
-    "bulletslist": "Bullets",
-    "numberslist": "Numbers",
-    "image-position": "Position",
-    "none": "None",
-    "left": "Left",
-    "right": "Right",
-    "center": "Center"
+    "caption": "Caption"
 };
 
 })(jQuery);

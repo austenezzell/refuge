@@ -128,7 +128,7 @@ class ElementIndexesService extends BaseApplicationComponent
 			{
 				if (!isset($indexedBaseSources[$key]))
 				{
-					unset($settings['sources'][$key]);
+					unset($settings['sources']);
 				}
 			}
 		}

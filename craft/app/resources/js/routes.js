@@ -129,7 +129,7 @@ var Route = Garnish.Base.extend(
 
 			if (this.modal.urlInput.isText($elem))
 			{
-				urlHtml += Craft.escapeHtml($elem.val());
+				urlHtml += $elem.val();
 			}
 			else
 			{
@@ -138,7 +138,7 @@ var Route = Garnish.Base.extend(
 		}
 
 		this.$url.html(urlHtml);
-		this.$template.text(this.modal.$templateInput.val());
+		this.$template.html(this.modal.$templateInput.val());
 	}
 
 });

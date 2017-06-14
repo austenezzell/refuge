@@ -40,7 +40,7 @@ class RoutesVariable
 			{
 				if (is_string($part))
 				{
-					$urlDisplayHtml .= HtmlHelper::encode($part);
+					$urlDisplayHtml .= $part;
 				}
 				else
 				{

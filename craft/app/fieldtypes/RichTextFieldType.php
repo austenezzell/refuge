@@ -41,9 +41,25 @@ class RichTextFieldType extends BaseFieldType
 	 */
 	public function getSettingsHtml()
 	{
+		$configOptions = array('' => Craft::t('Default'));
+		$configPath = craft()->path->getConfigPath().'redactor/';
+
+		if (IOHelper::folderExists($configPath))
+		{
+			$configFiles = IOHelper::getFolderContents($configPath, false, '\.json$');
+
+			if (is_array($configFiles))
+			{
+				foreach ($configFiles as $file)
+				{
+					$configOptions[IOHelper::getFileName($file)] = IOHelper::getFileName($file, false);
+				}
+			}
+		}
+
 		$columns = array(
-			'text'       => 'text (~64K)',
-			'mediumtext' => 'mediumtext (~16MB)'
+			'text'       => Craft::t('Text (stores about 64K)'),
+			'mediumtext' => Craft::t('MediumText (stores about 4GB)')
 		);
 
 		$sourceOptions = array();
@@ -60,8 +76,7 @@ class RichTextFieldType extends BaseFieldType
 
 		return craft()->templates->render('_components/fieldtypes/RichText/settings', array(
 			'settings' => $this->getSettings(),
-			'redactorConfigOptions' => $this->_getRedactorConfigOptions(),
-			'purifierConfigOptions' => $this->_getPurifierConfigOptions(),
+			'configOptions' => $configOptions,
 			'assetSourceOptions' => $sourceOptions,
 			'transformOptions' => $transformOptions,
 			'columns' => $columns,
@@ -118,7 +133,7 @@ class RichTextFieldType extends BaseFieldType
 	 */
 	public function getInputHtml($name, $value)
 	{
-		$configJs = $this->_getRedactorConfigJson();
+		$configJs = $this->_getConfigJson();
 		$this->_includeFieldResources($configJs);
 
 		$id = craft()->templates->formatInputId($name);
@@ -190,7 +205,11 @@ class RichTextFieldType extends BaseFieldType
 			if ($this->getSettings()->purifyHtml)
 			{
 				$purifier = new \CHtmlPurifier();
-				$purifier->setOptions($this->_getPurifierConfig());
+				$purifier->setOptions(array(
+					'Attr.AllowedFrameTargets' => array('_blank'),
+					'HTML.AllowedComments' => array('pagebreak'),
+				));
+
 				$value = $purifier->purify($value);
 			}
 
@@ -288,7 +307,6 @@ class RichTextFieldType extends BaseFieldType
 	{
 		return array(
 			'configFile'            => AttributeType::String,
-			'purifierConfig'        => AttributeType::String,
 			'cleanupHtml'           => array(AttributeType::Bool, 'default' => true),
 			'purifyHtml'            => array(AttributeType::Bool, 'default' => true),
 			'columnType'            => array(AttributeType::String),
@@ -412,7 +430,7 @@ class RichTextFieldType extends BaseFieldType
 
 		$assetSourceIds = $this->getSettings()->availableAssetSources;
 
-		if ($assetSourceIds === '*' || !$assetSourceIds)
+		if (!$assetSourceIds)
 		{
 			$assetSourceIds = craft()->assetSources->getPublicSourceIds();
 		}
@@ -422,17 +440,10 @@ class RichTextFieldType extends BaseFieldType
 			'parentId' => ':empty:'
 		));
 
-		// Sort it by source order.
-		$list = array();
-
 		foreach ($folders as $folder)
 		{
-		    $list[$folder->sourceId] = $folder->id;
+			$sources[] = 'folder:'.$folder->id;
 		}
-
-		foreach ($assetSourceIds as $assetSourceId) {
-		    $sources[] = 'folder:'.$list[$assetSourceId];
-        }
 
 		return $sources;
 	}
@@ -463,37 +474,11 @@ class RichTextFieldType extends BaseFieldType
 	}
 
 	/**
-	 * Returns the available Redactor config options.
-	 *
-	 * @return array
-	 */
-	private function _getRedactorConfigOptions()
-	{
-		$options = array('' => Craft::t('Default'));
-		$path = craft()->path->getConfigPath().'redactor/';
-
-		if (IOHelper::folderExists($path))
-		{
-			$configFiles = IOHelper::getFolderContents($path, false, '\.json$');
-
-			if (is_array($configFiles))
-			{
-				foreach ($configFiles as $file)
-				{
-					$options[IOHelper::getFileName($file)] = IOHelper::getFileName($file, false);
-				}
-			}
-		}
-
-		return $options;
-	}
-
-	/**
 	 * Returns the Redactor config JSON used by this field.
 	 *
 	 * @return string
 	 */
-	private function _getRedactorConfigJson()
+	private function _getConfigJson()
 	{
 		if ($this->getSettings()->configFile)
 		{
@@ -510,55 +495,6 @@ class RichTextFieldType extends BaseFieldType
 	}
 
 	/**
-	 * Returns the available HTML Purifier config options.
-	 *
-	 * @return array
-	 */
-	private function _getPurifierConfigOptions()
-	{
-		$options = array('' => Craft::t('Default'));
-		$path = craft()->path->getConfigPath().'htmlpurifier/';
-
-		if (IOHelper::folderExists($path))
-		{
-			$configFiles = IOHelper::getFolderContents($path, false, '\.json$');
-
-			if (is_array($configFiles))
-			{
-				foreach ($configFiles as $file)
-				{
-					$options[IOHelper::getFileName($file)] = IOHelper::getFileName($file, false);
-				}
-			}
-		}
-
-		return $options;
-	}
-
-	/**
-	 * Returns the HTML Purifier config used by this field.
-	 *
-	 * @return array
-	 */
-	private function _getPurifierConfig()
-	{
-		$file = $this->getSettings()->purifierConfig;
-		$path = craft()->path->getConfigPath().'htmlpurifier/'.$file;
-
-		if (!$file || !IOHelper::fileExists($path))
-		{
-			return array(
-				'Attr.AllowedFrameTargets' => array('_blank'),
-				'HTML.AllowedComments' => array('pagebreak'),
-			);
-		}
-
-		$json = IOHelper::getFileContents($path);
-
-		return JsonHelper::decode($json);
-	}
-
-	/**
 	 * Includes the input resources.
 	 *
 	 * @param string $configJs
@@ -569,7 +505,9 @@ class RichTextFieldType extends BaseFieldType
 	{
 		craft()->templates->includeCssResource('lib/redactor/redactor.min.css');
 
-		craft()->templates->includeJsResource('lib/redactor/redactor'.(craft()->config->get('useCompressedJs') ? '.min' : '').'.js');
+		// Gotta use the uncompressed Redactor JS until the compressed one gets our Live Preview menu fix
+		craft()->templates->includeJsResource('lib/redactor/redactor.js');
+		//craft()->templates->includeJsResource('lib/redactor/redactor'.(craft()->config->get('useCompressedJs') ? '.min' : '').'.js');
 
 		$this->_maybeIncludeRedactorPlugin($configJs, 'fullscreen', false);
 		$this->_maybeIncludeRedactorPlugin($configJs, 'source|html', false);

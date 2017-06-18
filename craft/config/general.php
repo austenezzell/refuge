@@ -22,7 +22,7 @@ return array(
     /* Environment Variables */
     'environmentVariables' => array(
       'baseAssetUrl'  => 'http://localhost:8888',
-      'baseAssetPath' => '/users/austenezzell/Desktop/refuge/build',
+      'baseAssetPath' => '/Users/aezzell/Desktop/refuge/build/',
     )
   ),
   'cincodesign.cinco.io' => array(

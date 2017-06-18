@@ -1,0 +1,32 @@
+{% extends "_layout" %} {% block content %}
+
+<div class="portfolio">
+  <section class="padding-y-xs-4x wrap project">
+    {% if entry.video %}
+    <div class="row">
+      <div class="col-xs-10 offset-xs-1">
+        {% set poster = entry.videoPoster.first('sxiteenNine') %}
+        {% if poster %}
+          <video class="portfolio-item portfolio-video" src="{{ entry.video }}" poster="{{ poster.getUrl }}"></video>
+        {% else %}
+          <video class="portfolio-item portfolio-video" src="{{ entry.video }}" poster=""></video>
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
+    <div class="row padding-y-xs-2x project-description">
+      <div class="col-xs-10 offset-xs-1 col-md-3 offset-md-1 ">
+        {% if entry.videoTitle %}
+          <h4>{{ entry.videoTitle }}</h4>
+        {% endif %}
+      </div>
+      <div class="col-xs-10 offset-xs-1 col-md-7 offset-md-0">
+        {% if entry.body %}
+          {{ entry.body }}
+        {% endif %}
+      </div>
+    </div>
+  </section>
+</div>
+
+{% endblock %}

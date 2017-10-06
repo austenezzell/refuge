@@ -110,3 +110,9 @@ video[poster]{
     transform: translate(0px, 0px);
   }
 }
+
+.slider-review {
+  opacity: 0;
+  animation: fade-in 500ms ease forwards;
+  animation-delay: 500ms;
+}

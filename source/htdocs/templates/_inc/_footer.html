@@ -21,22 +21,50 @@
           </a>
         </div>
         <div class="col-xs-10 offset-xs-1 col-md-5 offset-md-0">
+          <a href="#" class="join-list font-md font-bold"><span class="cta">Subscribe to our newsletter</span></a>
           <a class="font-sm" href="mailto:{{ footer.email }}">{{ footer.email }}</a>
           <p class="font-sm">{{ footer.phone }}</p>
           <a class="font-sm light" href="{{ footer.mapUrl }}">{{ footer.address}}</a>
+
+          {% if footer.social %}
+            {% include '_inc/_social' %}
+          {% endif %}
+
         </div>
       </div>
     </footer>
 
-    <script>
+    <div class="subscribe sign-up">
+      <a href="#" class="close-form font-sm">close</a>
+      <div class="wrap">
+        <div class="row vh-full">
+          <div class="form col-xs-10 offset-xs-1 col-md-6 offset-md-3 align-middle-xs">
+            <form
+                class="subscribe-form no-smoothState"
+                action="//refugevfx.us13.list-manage.com/subscribe/post-json?u=b195fa823301b3f7b5eee095d&id=f4d31f1630"
+                method="get">
+              <input type="email" autocapitalize="off" autocorrect="off" name="EMAIL" placeholder="Email" value="" id="email" class="font-md">
+              <button type="submit" class="email-submit font-md">Join</button>
+            </form>
+            <div class="subscribe-result font-md"></div>
+          </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
       ga('create', 'UA-98180597-1', 'auto');
-      ga('send', 'pageview');      
-    </script>
+      ga('send', 'pageview');
+    </script> -->
+
     <!-- build:js /js/scripts.js -->
     <!-- bower:js -->
     <!-- endinject -->

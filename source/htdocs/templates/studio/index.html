@@ -19,6 +19,21 @@
   {% endif %}
 </section>
 
+{% if entry.reviews %}
+<section class="padding-y-xs-3x wrap">
+  <div class="row">
+    <div class="col-xs-10 offset-xs-1">
+      <!-- REVIEW SLIDER -->
+      <section class="slick-slider slider slider-review">
+        {% for reviews in entry.reviews %}
+          <div><p class="font-sm bold-font body-copy">&ldquo;{{reviews.review}}&rdquo;</p><p class="font-sm body-copy">– {{reviews.author}}</p></div>
+        {% endfor %}
+      </section>
+    </div>
+  </div>
+</section>
+{% endif %}
+
 <section class="padding-y-xs-3x wrap">
   <div class="row">
     <div class="col-xs-10 offset-xs-1 col-md-5 offset-md-1">
@@ -45,7 +60,6 @@
   </section>
 {% endif %}
 
-
 <section class="wrap">
   <div class="row">
     <div class="col-xs-10 offset-xs-1">
@@ -65,6 +79,21 @@
   </div>
 </section>
 
+{% if entry.workWithUs %}
+<section class="padding-y-xs-3x wrap">
+  <div class="row">
+    {% for workWithUs in entry.workWithUs %}
+    <div class="col-xs-10 offset-xs-1 col-md-5 offset-md-1">
+      <h2>{{workWithUs.workWithUsTitle}}</h2>
+    </div>
+    <div class="col-xs-10 offset-xs-1 col-md-5 offset-md-0">
+      <div class="body-copy"><p>{{workWithUs.workWithUsBody}}</p><a class="cta join-work-list" href="#">{{workWithUs.joinWorkList}}</a></div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
 {% set imageAsset = entry.image.first() %}
 {% if imageAsset %}
   <section class="padding-y-xs-3x wrap">
@@ -79,13 +108,53 @@
 {% endif %}
 
 
-
-<section class="padding-y-xs-3x wrap">
+<section class="padding-y-xs-1x wrap">
   <div class="row">
     <div class="col-xs-10 offset-xs-1 col-md-5 offset-md-6">
       <a class="font-lg cta" href="/portfolio/">See our portfolio</a>
     </div>
   </div>
 </section>
+
+
+<div class="work-with-us sign-up">
+  <a href="#" class="close-form font-sm">close</a>
+  <div class="wrap">
+    <div class="row vh-full">
+      <div class="form col-xs-10 offset-xs-1 col-md-6 offset-md-3 align-middle-xs">
+        <form
+            class="work-subscribe-form no-smoothState"
+            action="//refugevfx.us13.list-manage.com/subscribe/post-json?u=b195fa823301b3f7b5eee095d&id=f9b37c80c0"
+            method="get">
+          <input type="text" autocapitalize="on" autocorrect="off" name="FNAME" placeholder="First Name" value="" id="mce-FNAME" class="font-sm">
+          <input type="text" autocapitalize="on" autocorrect="off" name="LNAME" placeholder="Last Name" value="" id="mce-LNAME" class="font-sm">
+          <input type="email" autocapitalize="off" autocorrect="off" name="EMAIL" placeholder="Email" value="" id="email" class="font-sm">
+
+
+          <div class="mc-field-group">
+          	<label class="font-sm" for="mce-PDEPT">Primary Skills</label>
+          	<select name="PDEPT" class="required" id="mce-PDEPT">
+            	<option class="font-sm" value="--Choose One--">--Choose One--</option>
+              <option class="font-sm" value="3D Generalist - 3ds Max">3D Generalist - 3ds Max</option>
+              <option class="font-sm" value="3D Generalist - Maya">3D Generalist - Maya</option>
+              <option class="font-sm" value="3D Animator">3D Animator</option>
+              <option class="font-sm" value="Nuke Compositor">Nuke Compositor</option>
+              <option class="font-sm" value="After Effects Compositor">After Effects Compositor</option>
+              <option class="font-sm" value="Paint and Roto">Paint and Roto</option>
+              <option class="font-sm" value="Matte Painting">Matte Painting</option>
+              <option class="font-sm" value="2D Animator">2D Animator</option>
+              <option class="font-sm" value="Storyboard Artist">Storyboard Artist</option>
+          	</select>
+          </div>
+
+        	<input class="font-sm" placeholder="Additional skills" type="text" value="" name="MMERGE5" class="" id="mce-MMERGE5">
+
+          <button type="submit" class="email-submit font-sm">Join</button>
+        </form>
+        <div class="subscribe-result font-md"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}

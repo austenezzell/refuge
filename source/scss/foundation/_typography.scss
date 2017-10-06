@@ -35,3 +35,7 @@ p {
   @include font-size(sm);
   line-height: $body-line-height;
 }
+
+.bold-font {
+  font-weight: 700;
+}

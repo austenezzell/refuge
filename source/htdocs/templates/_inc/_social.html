@@ -1,0 +1,7 @@
+{% block content %}
+  <ul class="social">
+  {% for block in footer.social %}
+    <li><a href="{{ block.socialLink }}" target="_blank">{{ block.socialIcon |raw }}</a></li>
+  {% endfor %}
+  </ul>
+{% endblock %}

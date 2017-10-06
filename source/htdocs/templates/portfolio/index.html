@@ -7,7 +7,7 @@
     <section class="padding-y-xs-4x wrap project">
       <div class="row">
         <div class="col-xs-10 offset-xs-1">
-          <video class="portfolio-item portfolio-video" src="{{ block.videoLink }}" poster=
+          <video class="portfolio-item portfolio-video" {% if block.videoTitle %} id="video-{{ block.videoTitle |replace({' ':''}) }}"{% endif %} src="{{ block.videoLink }}" poster=
             {% for videoPoster in block.videoPoster %}
               "{{ videoPoster.getUrl('sixteenNine') }}"
             {% endfor %}
@@ -34,7 +34,7 @@
 
 </div>
 
-<section class="padding-y-xs-3x wrap">
+<section class="padding-y-xs-1x wrap">
   <div class="row">
     <div class="col-xs-5 offset-xs-1 col-md-5 offset-md-6">
       <a class="cta font-md" href="/studio/">See our studio</a>
